@@ -53,7 +53,7 @@ output_ram rr5		(clk, output_ram_data_in, output_read_addr, output_read_en, outp
 sum_ram rr6			(clk, sum_ram_data_in, sum_read_addr, sum_read_en, sum_write_addr, sum_write_en, sum_ram_data_out);
 
 // For reading data from RAW DATA BRAM
-integer i = 0, j = 0, k = 0, l = 0, d = 0, p = 0, q = 0, s = 0, t = 0, internal_state = 0;
+integer i = 0, j = 0, k = 0, l = 0, d = 0, p = 0, q = 0, s = 0, t = 0, filt_state = 0, internal_state = 0;
 
 reg [12:0]delay_idx = 0;
 reg [95:0]filt_data = 0;
@@ -101,23 +101,19 @@ case (state)
 	filtering_s:	begin
 	
 						reset <= 1; // Start Filter.
-						case (internal_state)
+						case (filt_state)
 						0: begin
 							addr <= i;
 							read_en <= 1;
-							internal_state <= 1;
+							filt_state <= 1;
 							end
 							
 						1: begin
-							
+							data_in <= out;
+							filt_state <= 2;
 							end
-	
-						if(i < 16384) begin
-								reset <= 1; // Start filter
-								addr <= i;
-								read_en <= 1;
-								data_in <= out;
-								
+						
+						2: begin
 								if(filt_valid) begin
 									filtered <= data_out;
 									// Store filtered data into another ram:
@@ -125,24 +121,33 @@ case (state)
 									filt_ram_data_in <= filtered;
 									filt_write_en <= 1;
 									filt_read_en <= 0;
-									j <= j + 1;
-								end 
-								
+									
+									filt_state <= 3;
+								end
+							end
+						3: begin
+								j <= j + 1;
 								i <= i + 1;
 								
-								if(j == 2048) begin
-									i <= i + 1;
+								if( j == 2048) begin
 									j <= 0;
-									reset <= 0; // Stop filter
+									reset <= 0; // Stop Filter.
 									state <= processing_s;
 								end
 								
-							end else begin
-								i <= 0;
-								reset <= 0; // Stop filter
-								state <= summing_s;
+								if(i == 16384) begin
+									filt_state <= 0;
+									j <= 0;
+									i <= 0;
+									reset <= 0;
+									state <= summing_s;
+								end
+								
+								filt_state <= 0;
+								
 							end
 							
+						endcase
 						end
 						
 	processing_s:	begin
