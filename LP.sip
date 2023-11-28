@@ -1,0 +1,25 @@
+set_global_assignment -entity "LP" -library "lib_LP" -name IP_TOOL_NAME "altera_fir_compiler_ii"
+set_global_assignment -entity "LP" -library "lib_LP" -name IP_TOOL_VERSION "20.1"
+set_global_assignment -entity "LP" -library "lib_LP" -name IP_TOOL_ENV "mwpim"
+set_global_assignment -library "lib_LP" -name SPD_FILE [file join $::quartus(sip_path) "LP.spd"]
+
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/dspba_library_package.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/dspba_library.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/auk_dspip_math_pkg_hpfir.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/auk_dspip_lib_pkg_hpfir.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/auk_dspip_avalon_streaming_controller_hpfir.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/auk_dspip_avalon_streaming_sink_hpfir.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/auk_dspip_avalon_streaming_source_hpfir.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/auk_dspip_roundsat_hpfir.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/altera_avalon_sc_fifo.v"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_rtl_core.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_ast.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_nativelink.tcl"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_msim.tcl"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_tb.vhd"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_mlab.m"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_model.m"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_coef_int.txt"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_input.txt"]
+set_global_assignment -library "lib_LP" -name MISC_FILE [file join $::quartus(sip_path) "LP_sim/LP_param.txt"]

@@ -1,0 +1,14 @@
+module RAM_TEST(
+	input load.
+	input [14:0] addr;
+	output [15:0] data;
+);
+
+// Internal wires and reg for BRAM:
+reg read_en = 1, write_en = 0 /* synthesis keep */;
+wire [15:0] data /* synthesis keep */;
+reg [13:0] read_addr  = 14'd0/* synthesis keep */;
+reg [13:0] write_addr = 14'd0/* synthesis keep */;
+wire [15:0] q /* synthesis keep */;
+
+ram r1();

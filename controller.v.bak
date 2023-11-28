@@ -1,0 +1,22 @@
+module controller(
+	input clk, 
+);
+
+reg clk;
+reg [13:0] addr;
+wire [15:0] out;
+reg [15:0] data_in;
+wire [104:0] data_out;
+
+reg [104:0] filtered = 0;
+
+reg read_en = 0;
+reg reset = 1;
+wire data_ready;
+
+RAM rr1(clk, read_en, addr, out);
+filtering ff1(clk, reset, data_in, data_ready, data_out);
+
+
+
+endmodule

@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+
+module filter_test_tb();
+	
+reg clk; // 100 MHz clock
+wire [104:0]out;
+
+filter_test f1(clk, out);
+
+initial begin
+	clk <= 0;
+	forever #5 clk <= ~clk;
+end
+
+
+
+endmodule
