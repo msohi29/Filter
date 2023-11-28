@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Tue Nov 28 12:22:38 2023
-Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Analysis & Synthesis Status : Successful - Tue Nov 28 19:45:19 2023
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : filter_test
-Top-level Entity Name : filter_test
+Top-level Entity Name : controller
 Family : Cyclone IV E
-Total logic elements : 0
-    Total combinational functions : 0
-    Dedicated logic registers : 0
-Total registers : 0
-Total pins : 114
+Total logic elements : 1,558
+    Total combinational functions : 1,550
+    Dedicated logic registers : 39
+Total registers : 39
+Total pins : 31
 Total virtual pins : 0
-Total memory bits : 0
+Total memory bits : 700,416
 Embedded Multiplier 9-bit elements : 0
-Total PLLs : 0
+Total PLLs : 1

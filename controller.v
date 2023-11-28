@@ -1,5 +1,12 @@
 module controller(
-	input clk
+	input clk50,
+	input com_start,
+	input com_stop,
+	input [1:0] com_key, // used to start transmission
+	output [15:0] com_LEDR, // display received data
+	output [7:0] com_LEDG, // display transmit data
+	output com_UART_TXD, // transmit bit
+	input com_UART_RXD
 );
 
 reg [13:0] addr;
@@ -38,13 +45,30 @@ reg [12:0]output_write_addr = 0;
 reg [31:0]output_ram_data_in;
 wire [31:0]output_ram_data_out;
 
+reg ram_read_en = 0; 
+wire ram_write_en;
+reg [13:0]ram_read_addr = 0;
+wire [13:0]ram_write_addr;
+reg [15:0]ram_data_in;
+wire [15:0]ram_data_out;
+
 reg sum_read_en = 0, sum_write_en = 0;
 reg [9:0]sum_read_addr = 0;
 reg [9:0]sum_write_addr = 0;
 reg [39:0]sum_ram_data_in;
 wire [39:0]sum_ram_data_out;
 
-RAM rr1				(clk, read_en, addr, out);
+reg pll_reset = 1;
+wire clk;
+wire pll_locked;
+
+reg com_tx_en = 0;
+reg [7:0]com_tx_data;
+wire com_tx_rdy;
+
+PLL pll1				(pll_reset, clk50, clk, pll_locked);
+communication com	(clk, com_start, com_stop, com_tx_data, com_key, com_tx_en, com_LEDR, com_LEDG, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr, com_tx_rdy);
+ram rr1				(clk, ram_data_in, ram_read_addr, ram_read_en, ram_write_addr, ram_write_en, ram_data_out);
 filter_test ff1	(clk, reset, data_in, filt_valid, data_out);
 filtered_ram rr2	(clk, filt_ram_data_in, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
 processed_ram rr3	(clk, proc_ram_data_in, proc_read_addr, proc_read_en, proc_write_addr, proc_write_en, proc_ram_data_out);
@@ -73,29 +97,33 @@ reg [39:0]sum;
 
 
 // States:
-parameter receiving_s  = 0, 
-			 filtering_s  = 1, 
-			 processing_s = 2,
-			 indexing_s	  = 3,
-			 summing_s	  = 4,
-			 sending_s    = 5,
-			 done_s		  = 6;
+parameter phaselock_s  = 0,
+			 receiving_s  = 1, 
+			 filtering_s  = 2, 
+			 processing_s = 3,
+			 indexing_s	  = 4,
+			 summing_s	  = 5,
+			 sending_s    = 6,
+			 done_s		  = 7;
 			 
-reg [2:0] state = receiving_s;
+reg [2:0] state = phaselock_s;
 			 
 always @ (posedge clk, posedge state) begin
 
 case (state)
+	phaselock_s:	begin
+							pll_reset = 0;
+							if(pll_locked) begin
+								state = receiving_s;
+							end
+						end
 
 	receiving_s:	begin
-//						/reset <= 1;
-//						data_in <= 1234;
-						
-//						if(filt_valid) begin
-							state <= filtering_s;
-//							data_in <= 0;
-//						end
-						
+//							if(ram_write_addr >= 16384) begin
+//								state = filtering_s;
+//								com_stop = 1;
+//							end
+						state = filtering_s;
 						end
 	
 	filtering_s:	begin
@@ -276,18 +304,69 @@ case (state)
 						end
 						
 	sending_s:		begin
-							sum_read_addr <= i;
-							sum_read_en <= 1;
-							sum_write_en <= 0;
+							case (internal_state)
+								// initiate read
+								0: begin
+										com_tx_en = 0;
+										if(com_tx_rdy) begin
+											sum_read_addr <= i;
+											sum_read_en <= 1;
+											sum_write_en <= 0;
+										
+											internal_state = 1;
+										end
+									end
+								// send byte 1
+								1: begin
+										com_tx_en = 0;
+										if(com_tx_rdy) begin
+											com_tx_data = sum_ram_data_out[39:32];
+											com_tx_en = 1;
+											internal_state = 2;
+										end
+									end
+								// send byte 2
+								2: begin
+										com_tx_en = 0;
+										if(com_tx_rdy) begin
+											com_tx_data = sum_ram_data_out[31:24];
+											com_tx_en = 1;
+											internal_state = 3;
+										end
+									end
+								// send byte 3
+								3: begin
+										com_tx_en = 0;
+										if(com_tx_rdy) begin
+											com_tx_data = sum_ram_data_out[23:16];
+											com_tx_en = 1;
+											internal_state = 4;
+										end
+									end
+								// send byte 4
+								4: begin
+										com_tx_en = 0;
+										if(com_tx_rdy) begin
+											com_tx_data = sum_ram_data_out[15:8];
+											com_tx_en = 1;
+											internal_state = 5;
+										end
+									end
+								// send byte 5
+								5: begin
+										com_tx_en = 0;
+										if(com_tx_rdy) begin
+											com_tx_data = sum_ram_data_out[7:0];
+											com_tx_en = 1;
+											internal_state = 0;
+											i <= i+1;
+											if(i >= 768) begin
+												state <= done_s;
+											end
+										end
+									end
+							endcase
 							
-							sum <= sum_ram_data_out;
-							
-							i <= i + 1;
-							
-							if(i == 768) begin
-								i <= 0;
-								state <= done_s;
-							end
 						end
 						
 	done_s:			begin
