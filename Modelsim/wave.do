@@ -7,7 +7,7 @@ add wave -noupdate -label {raw data ram out} -radix decimal /filter_test_tb/c1/o
 add wave -noupdate -format Analog-Step -height 84 -label {filter data in} -max 2048.0 -min -1968.0 /filter_test_tb/c1/data_in
 add wave -noupdate -label {filt valid} -radix binary -radixshowbase 0 /filter_test_tb/c1/filt_valid
 add wave -noupdate -label {filter data out} /filter_test_tb/c1/data_out
-add wave -noupdate -format Analog-Step -height 84 -label filtered -max 5.285720000000001e+26 -min -5.2646999999999997e+26 /filter_test_tb/c1/filtered
+add wave -noupdate -format Analog-Step -height 84 -label filtered -max 4.0503641411005935e+26 -min -4.0599464867582536e+26 /filter_test_tb/c1/filtered
 add wave -noupdate -label i -radix unsigned -radixshowbase 0 /filter_test_tb/c1/i
 add wave -noupdate -label j -radix unsigned -radixshowbase 0 /filter_test_tb/c1/j
 add wave -noupdate -divider {Filter Ram}
@@ -39,7 +39,7 @@ add wave -noupdate -format Analog-Step -height 84 -label {Sum data in} -max 2147
 add wave -noupdate -label {Sum read addr} -radix unsigned /filter_test_tb/c1/sum_read_addr
 add wave -noupdate -format Analog-Step -height 84 -label {Sum ram data out} -max 21475678870.0 -radix unsigned /filter_test_tb/c1/sum_ram_data_out
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {8729211 ps} 0}
+WaveRestoreCursors {{Cursor 1} {411923077 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
