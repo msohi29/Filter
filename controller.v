@@ -99,6 +99,19 @@ case (state)
 						end
 	
 	filtering_s:	begin
+	
+						reset <= 1; // Start Filter.
+						case (internal_state)
+						0: begin
+							addr <= i;
+							read_en <= 1;
+							internal_state <= 1;
+							end
+							
+						1: begin
+							
+							end
+	
 						if(i < 16384) begin
 								reset <= 1; // Start filter
 								addr <= i;
