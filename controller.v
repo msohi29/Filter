@@ -4,7 +4,7 @@ module controller(
 
 reg [13:0] addr;
 wire [15:0] out;
-reg [15:0] data_in;
+reg [15:0] data_in = 0;
 wire [95:0] data_out;
 
 reg [95:0] filtered = 0;
@@ -44,9 +44,12 @@ reg [9:0]sum_write_addr = 0;
 reg [39:0]sum_ram_data_in;
 wire [39:0]sum_ram_data_out;
 
+//RAM rr1				(clk, read_en, addr, out);
+//filter_test ff1	(clk, reset, data_in, filt_valid, data_out);
 RAM rr1				(clk, read_en, addr, out);
-filter_test ff1	(clk, reset, data_in, filt_valid, data_out);
-filtered_ram rr2	(clk, filt_ram_data_in, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
+filter_test ff1	(clk, reset, out, filt_valid, data_out);
+filtered_ram rr2	(clk, data_out, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
+//filtered_ram rr2	(clk, filt_ram_data_in, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
 processed_ram rr3	(clk, proc_ram_data_in, proc_read_addr, proc_read_en, proc_write_addr, proc_write_en, proc_ram_data_out);
 delays_ram rr4		(clk, delay_ram_data_in, delay_read_addr, delay_read_en, delay_write_addr, delay_write_en, delay_ram_data_out);
 output_ram rr5		(clk, output_ram_data_in, output_read_addr, output_read_en, output_write_addr, output_write_en, output_ram_data_out);
@@ -54,6 +57,7 @@ sum_ram rr6			(clk, sum_ram_data_in, sum_read_addr, sum_read_en, sum_write_addr,
 
 // For reading data from RAW DATA BRAM
 integer i = 0, j = 0, k = 0, l = 0, d = 0, p = 0, q = 0, s = 0, t = 0, filt_state = 0, internal_state = 0;
+integer filtering = 0;
 
 reg [12:0]delay_idx = 0;
 reg [95:0]filt_data = 0;
@@ -82,72 +86,86 @@ parameter receiving_s  = 0,
 			 done_s		  = 6;
 			 
 reg [2:0] state = receiving_s;
+
+always @ (posedge clk) begin
+	
+	if(filtering) begin
+		// Store filtered data into another ram:
+		filt_write_addr <= j;
+//		filt_ram_data_in <= data_out;
+		filt_write_en <= 1;
+	end
+	
+end
 			 
 always @ (posedge clk, posedge state) begin
 
 case (state)
 
 	receiving_s:	begin
-//						/reset <= 1;
-//						data_in <= 1234;
-						
-//						if(filt_valid) begin
-							state <= filtering_s;
-//							data_in <= 0;
-//						end
-						
+						state <= filtering_s;
 						end
 	
 	filtering_s:	begin
-	
-						reset <= 1; // Start Filter.
-						case (filt_state)
-						0: begin
-							addr <= i;
-							read_en <= 1;
-							filt_state <= 1;
-							end
-							
-						1: begin
-							data_in <= out;
-							filt_state <= 2;
-							end
+						addr <= i;
+						read_en <= 1;
+						if(i >= 13) begin
+							filtering <= 1;
+							j <= j + 1;
+						end
 						
-						2: begin
-								if(filt_valid) begin
-									filtered <= data_out;
-									// Store filtered data into another ram:
-									filt_write_addr <= j;
-									filt_ram_data_in <= filtered;
-									filt_write_en <= 1;
-									filt_read_en <= 0;
-									
-									filt_state <= 3;
-								end
-							end
-						3: begin
-								j <= j + 1;
-								i <= i + 1;
-								
-								if( j == 2048) begin
-									j <= 0;
-									reset <= 0; // Stop Filter.
-									state <= processing_s;
-								end
-								
-								if(i == 16384) begin
-									filt_state <= 0;
-									j <= 0;
-									i <= 0;
-									reset <= 0;
-									state <= summing_s;
-								end
-								
-								filt_state <= 0;
-								
-							end
-							
-						endcase
+						i <= i + 1;
+						
+						if( j == 2048) begin
+							filtering <= 0;
+							j <= 0;
+							reset <= 0; // Stop Filter.
+							state <= processing_s;
+						end
+					
+						if(i == 16384) begin
+							filtering <= 0;
+							j <= 0;
+							i <= 0;
+							reset <= 0;
+							state <= summing_s;
+						end
+	
+//						reset <= 1; // Start Filter.
+//						case (filt_state)
+//						0: begin
+//							addr <= i;
+//							read_en <= 1;
+//							if( i >= 7) begin
+//								filtering <= 1;
+//								j <= j + 1;
+//							end
+//							filt_state <= 1;
+//							end
+//							
+//						1: begin
+////							data_in <= out;
+//							i <= i + 1;
+//							
+//							if( j == 2048) begin
+//								filtering <= 0;
+//								j <= 0;
+//								reset <= 0; // Stop Filter.
+//								state <= processing_s;
+//							end
+//							
+//							if(i == 16384) begin
+//								filt_state <= 0;
+//								j <= 0;
+//								i <= 0;
+//								reset <= 0;
+//								state <= summing_s;
+//							end
+//							
+//							filt_state <= 0;
+//							
+//							end
+//						endcase
 						end
 						
 	processing_s:	begin
