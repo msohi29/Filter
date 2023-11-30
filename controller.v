@@ -92,10 +92,8 @@ always @ (posedge clk) begin
 	if(filtering) begin
 		// Store filtered data into another ram:
 		filt_write_addr <= j;
-//		filt_ram_data_in <= data_out;
 		filt_write_en <= 1;
 	end
-	
 end
 			 
 always @ (posedge clk, posedge state) begin
@@ -107,65 +105,36 @@ case (state)
 						end
 	
 	filtering_s:	begin
-						addr <= i;
-						read_en <= 1;
+	
+//						if(i && (i % 2048)) begin
+							addr <= i;
+							read_en <= 1;
+//						end
+	
+						
 						if(i >= 13) begin
 							filtering <= 1;
 							j <= j + 1;
 						end
 						
-						i <= i + 1;
+						if(i < 16383) begin
+							i <= i + 1;
+						end
+						
+						if(i == 16383 && j == 2048) begin
+								filtering <= 0;
+								j <= 0;
+								i <= 0;
+								reset <= 0;
+								state <= summing_s;
+							end
+						
 						
 						if( j == 2048) begin
 							filtering <= 0;
 							j <= 0;
-							reset <= 0; // Stop Filter.
 							state <= processing_s;
 						end
-					
-						if(i == 16384) begin
-							filtering <= 0;
-							j <= 0;
-							i <= 0;
-							reset <= 0;
-							state <= summing_s;
-						end
-	
-//						reset <= 1; // Start Filter.
-//						case (filt_state)
-//						0: begin
-//							addr <= i;
-//							read_en <= 1;
-//							if( i >= 7) begin
-//								filtering <= 1;
-//								j <= j + 1;
-//							end
-//							filt_state <= 1;
-//							end
-//							
-//						1: begin
-////							data_in <= out;
-//							i <= i + 1;
-//							
-//							if( j == 2048) begin
-//								filtering <= 0;
-//								j <= 0;
-//								reset <= 0; // Stop Filter.
-//								state <= processing_s;
-//							end
-//							
-//							if(i == 16384) begin
-//								filt_state <= 0;
-//								j <= 0;
-//								i <= 0;
-//								reset <= 0;
-//								state <= summing_s;
-//							end
-//							
-//							filt_state <= 0;
-//							
-//							end
-//						endcase
 						end
 						
 	processing_s:	begin
@@ -178,28 +147,30 @@ case (state)
 								q <= 1;
 								end
 							1: begin
-								filt_data <= filt_ram_data_out;
-								proc_ram_data_in <= filt_data[31:0];
-								proc_write_addr <= (3*p) + (q-1);
-								proc_write_en <= 1;
-								proc_read_en <= 0;
 								q <= 2;
 								end
-							2:	begin
-								proc_ram_data_in <= filt_data[63:32];
-								proc_write_addr <= (3*p) + (q-1);
-								proc_write_en <= 1;
-								proc_read_en <= 0;
+							2: begin
 								q <= 3;
 								end
 							3: begin
-								proc_ram_data_in <= filt_data[95:64];
-								proc_write_addr <= (3*p) + (q-1);
+								proc_ram_data_in <= filt_ram_data_out[31:0];
+								proc_write_addr <= (3*p) + (q-3);
 								proc_write_en <= 1;
 								proc_read_en <= 0;
 								q <= 4;
 								end
-							4: begin
+							4:	begin
+								proc_ram_data_in <= filt_ram_data_out[63:32];
+								proc_write_addr <= (3*p) + (q-3);
+								proc_write_en <= 1;
+								proc_read_en <= 0;
+								q <= 5;
+								end
+							5: begin
+								proc_ram_data_in <= filt_ram_data_out[95:64];
+								proc_write_addr <= (3*p) + (q-3);
+								proc_write_en <= 1;
+								proc_read_en <= 0;
 								p <= p + 1;
 								q <= 0;
 								end
@@ -221,19 +192,29 @@ case (state)
 							delay_write_en <= 0;
 							internal_state <= 1;
 							end
-	
-						1: begin
-							delay_idx <= delay_ram_data_out;
 							
-							proc_read_addr <= delay_idx;
-							proc_read_en <= 1;
-							proc_write_en <= 0;
+						1: begin
 							internal_state <= 2;
 							end
-						2:	begin
-							proc_data <= proc_ram_data_out;
 							
-							output_ram_data_in <= proc_data;
+						2:	begin
+							internal_state <= 3;
+							end
+	
+						3: begin
+							proc_read_addr <= delay_ram_data_out;
+							proc_read_en <= 1;
+							proc_write_en <= 0;
+							internal_state <= 4;
+							end
+						
+						4: begin
+							output_ram_data_in <= proc_ram_data_out;
+							internal_state <= 5;
+							end
+						
+						5: begin
+							
 							output_write_addr <= (768*l) + k;
 							output_write_en <= 1;
 							output_read_en <= 0;
@@ -246,7 +227,14 @@ case (state)
 						if(k == 768) begin
 							l = l + 1;
 							k <= 0;
-							state <= filtering_s;
+							if(l < 7) begin
+								state <= filtering_s;
+							end
+							else begin
+								i <= 0;
+								state <= summing_s;
+							end
+							
 						end
 						end
 						
