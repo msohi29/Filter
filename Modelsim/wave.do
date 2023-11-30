@@ -15,8 +15,9 @@ add wave -noupdate -label {filt write addr} -radix unsigned -radixshowbase 0 /fi
 add wave -noupdate -label {filt ram data in} -radix decimal /filter_test_tb/c1/data_out
 add wave -noupdate -label {filt read addr} -radix unsigned -radixshowbase 0 /filter_test_tb/c1/filt_read_addr
 add wave -noupdate -label {filt read en} -radix binary -radixshowbase 0 /filter_test_tb/c1/filt_read_en
-add wave -noupdate -label {filt write en} -radix binary -radixshowbase 0 /filter_test_tb/c1/filt_write_en
-add wave -noupdate -format Analog-Step -height 84 -label {filt ram out} -max 5.285716581929064e+26 -min -4.8653566048833394e+26 -radix decimal /filter_test_tb/c1/filt_ram_data_out
+add wave -noupdate -format Literal -label {filt write en} -radix binary -radixshowbase 0 /filter_test_tb/c1/filt_write_en
+add wave -noupdate -label {filt ram out} -max 5.285720000000001e+26 -min -4.8653600000000003e+26 -radix decimal /filter_test_tb/c1/filt_ram_data_out
+add wave -noupdate -format Analog-Step -height 84 -label {filt ram out} -max 5.285720000000001e+26 -min -4.8653600000000003e+26 -radix decimal /filter_test_tb/c1/filt_ram_data_out
 add wave -noupdate -divider {Proccess Ram}
 add wave -noupdate -label {proc ram read addr} -radix unsigned /filter_test_tb/c1/proc_read_addr
 add wave -noupdate -label {proc ram write addr} -radix unsigned /filter_test_tb/c1/proc_write_addr
@@ -40,7 +41,7 @@ add wave -noupdate -format Analog-Step -height 84 -label {Sum data in} -max 2147
 add wave -noupdate -label {Sum read addr} -radix unsigned /filter_test_tb/c1/sum_read_addr
 add wave -noupdate -format Analog-Step -height 84 -label {Sum ram data out} -max 21475700000.0 -radix unsigned /filter_test_tb/c1/sum_ram_data_out
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {31455000 ps} 0}
+WaveRestoreCursors {{Cursor 1} {28996154 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -56,4 +57,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {30879087 ps} {32847837 ps}
+WaveRestoreZoom {0 ps} {42 us}
