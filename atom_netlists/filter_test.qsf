@@ -1,0 +1,217 @@
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_location_assignment PIN_Y2 -to clk50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk50
+set_location_assignment PIN_G12 -to com_UART_RXD
+set_location_assignment PIN_G9 -to com_UART_TXD
+set_location_assignment PIN_N21 -to com_start
+set_location_assignment PIN_R24 -to com_stop
+set_location_assignment PIN_M23 -to com_key[0]
+set_location_assignment PIN_M21 -to com_key[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_UART_RXD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_UART_TXD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_start
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_stop
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_key[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_key[1]
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY controller
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:07:45  NOVEMBER 25, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE communication.v
+set_global_assignment -name VERILOG_FILE UART.v
+set_global_assignment -name VERILOG_FILE TX.v
+set_global_assignment -name VERILOG_FILE RX.v
+set_global_assignment -name MIF_FILE delays.mif
+set_global_assignment -name QIP_FILE DPRAM.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip DPRAM.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip DPRAM.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip DPRAM.qip
+set_global_assignment -name VERILOG_FILE DPRAM.v -qip DPRAM.qip
+set_global_assignment -name VERILOG_FILE DPRAM.v
+set_global_assignment -name VERILOG_FILE ram_test.v
+set_global_assignment -name TCL_SCRIPT_FILE Modelsim/filter_test_tb.tcl
+set_global_assignment -name COMMAND_MACRO_FILE Modelsim/wave.do
+set_global_assignment -name SOURCE_FILE LP.cmp
+set_global_assignment -name VERILOG_FILE filter_test.v
+set_global_assignment -name QIP_FILE LP.qip
+set_global_assignment -name IP_TOOL_NAME altera_fir_compiler_ii -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_TOOL_VERSION 20.1 -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_TOOL_ENV mwpim -entity LP -qip LP.qip -library LP
+set_global_assignment -name MISC_FILE LP.cmp -qip LP.qip -library LP
+set_global_assignment -name IP_TARGETED_DEVICE_FAMILY "Cyclone IV E" -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_QSYS_MODE UNKNOWN -entity LP -qip LP.qip -library LP
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON -qip LP.qip
+set_global_assignment -name IP_COMPONENT_NAME "TFA=" -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_DISPLAY_NAME RklSIElJ -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_REPORT_HIERARCHY OFF -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_INTERNAL OFF -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24=" -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_VERSION "MjAuMQ==" -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_DESCRIPTION "RklSIElJIEludGVsIEZQR0EgSVA=" -entity LP -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_NAME "TFBfMDAwMg==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_DISPLAY_NAME RklSIElJ -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_REPORT_HIERARCHY OFF -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_INTERNAL OFF -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_VERSION "MjAuMQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_DESCRIPTION "RklSIElJIEludGVsIEZQR0EgSVA=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZmlsdGVyVHlwZQ==::aW50ZXJw::RmlsdGVyIFR5cGU=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aW50ZXJwRmFjdG9y::Mw==::SW50ZXJwb2xhdGlvbiBGYWN0b3I=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZGVjaW1GYWN0b3I=::MQ==::RGVjaW1hdGlvbiBGYWN0b3I=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "c3ltbWV0cnlNb2Rl::c3lt::U3ltbWV0cnk=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "TF9iYW5kc0ZpbHRlcg==::MQ==::TC10aCBCYW5kIEZpbHRlcg==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aW5wdXRDaGFubmVsTnVt::MQ==::TWF4IE51bWJlciBvZiBDaGFubmVscw==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::MTAw::Q2xvY2sgUmF0ZQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y2xvY2tTbGFjaw==::MA==::Q2xvY2sgU2xhY2s=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aW5wdXRSYXRl::MTAw::SW5wdXQgU2FtcGxlIFJhdGUgKE1TUFMp" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZSZWxvYWQ=::ZmFsc2U=::Q29lZmZpY2llbnRzIFJlbG9hZA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZpY2llbnRSZWFkYmFjaw==::ZmFsc2U=::Y29lZmZpY2llbnRSZWFkYmFjaw==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZpY2llbnRXcml0ZWFibGU=::ZmFsc2U=::Y29lZmZpY2llbnRXcml0ZWFibGU=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "YnVzRGF0YVdpZHRo::MTY=::YnVzRGF0YVdpZHRo" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "YmFja1ByZXNzdXJl::ZmFsc2U=::QmFjayBQcmVzc3VyZSBTdXBwb3J0" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZGV2aWNlRmFtaWx5::Q3ljbG9uZSBJViBF::RGV2aWNlIEZhbWlseQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "c3BlZWRHcmFkZQ==::bWVkaXVt::U3BlZWQgR3JhZGU=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZGVsYXlSQU1CbG9ja1RocmVzaG9sZA==::MjA=::TWVtb3J5IEJsb2NrIFRocmVzaG9sZA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZHVhbE1lbURpc3RSQU1UaHJlc2hvbGQ=::MTI4MA==::RHVhbCBQb3J0IFJBTSBUaHJlc2hvbGQ=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "bVJBTVRocmVzaG9sZA==::MTAwMDAwMA==::TGFyZ2UgUkFNIFRocmVzaG9sZA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aGFyZE11bHRpcGxpZXJUaHJlc2hvbGQ=::LTE=::SGFyZCBNdWx0aXBsaWVyIFRocmVzaG9sZA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "cmVjb25maWd1cmFibGU=::ZmFsc2U=::UmVjb25maWd1cmFibGUgQ2FycmllciBNb2Rl" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "bnVtX21vZGVz::Mg==::TnVtYmVyIG9mIE1vZGVz" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "TW9kZVdpZHRo::MA==::TW9kZVdpZHRo" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "cmVjb25maWd1cmFibGVfbGlzdA==::MA==::Q2hvb3NlIE1vZGUgdG8gRWRpdA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "TU9ERV9TVFJJTkc=::Tm9uZSBTZXQ=::TU9ERV9TVFJJTkdfRElTUExBWQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "bW9kZUZvcm1hdHRlZA==::LS0=::bW9kZUZvcm1hdHRlZA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y2hhbm5lbE1vZGVz::MCwxLDIsMw==::Q2hhbm5lbCBNb2RlIE9yZGVy" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aW5wdXRUeXBl::aW50::SW5wdXQgVHlwZQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aW5wdXRCaXRXaWR0aA==::MTY=::SW5wdXQgV2lkdGg=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRSZWFsVmFsdWU=::LTIuMjc3MTk1NTM3MTAxODRFLTQsLTQuNzI4NjY5MzI0OTk0MzNFLTQsLTcuNTUyNzI2MzIyNjAzNjhFLTQsLTguNjg4MjQzMzQ1MzgzMjlFLTQsLTUuNDg0MTI5ODEyMzU3NDZFLTQsNC43MjM0MDE0ODMwMTQyNUUtNCwwLjAwMjMzODU5MDQyMjE3MzE0LDAuMDA0OTQzNTgwOTY5MTczNTEsMC4wMDc4NDgwNjQ3NTc2NDEyNiwwLjAxMDMwNDg4NjI3MDU4MDksMC4wMTE0MjE4ODQ0ODUzOTMzLDAuMDEwNDQyOTE1NTAxNDkzLDAuMDA3MDczOTMxNDY4MzA3MjUsMC4wMDE3MzYzMzg0ODg0NTc2OCwtMC4wMDQzNzU5NDI1NzE5NzI1OCwtMC4wMDk1MTMzMDEzNjE1NTQ5MiwtMC4wMTE4NTQwMDUxNjg5MDU1LC0wLjAxMDEzODgwMDQxNTc5MDQsLTAuMDA0MjU0NjQwNzYwMDYxMDIsMC4wMDQ0NjIwMzc1MDQ1NzkzNCwwLjAxMzM3OTI4MjE4OTU5MDEsMC4wMTkyMjYwNDMwNDMyMjIxLDAuMDE5MTIxNzE4NDEwMzIwNSwwLjAxMTY5MDIyOTMyNDc3MDYsLTAuMDAyMTExNjE5OTE4MDA4NywtMC4wMTg3ODcyODg4NDM1NTc2LC0wLjAzMjg5MTYyMzEyMjA0NTksLTAuMDM4MzUyODk1MDg5NDMxNiwtMC4wMzAyMDc5NDc3NTA3MjQ2LC0wLjAwNjI1NzE0MjMyODI5NDMxLDAuMDMxODg0MTEzOTU0ODk3NywwLjA3ODcyMTI3MDk0Mjk2NDksMC4xMjU5MTMxMzIwMTIzMTgsMC4xNjQxODA4ODEwMzAwNTIsMC4xODU1OTM2NDYzMDU1NjYsMC4xODU1OTM2NDYzMDU1NjYsMC4xNjQxODA4ODEwMzAwNTIsMC4xMjU5MTMxMzIwMTIzMTgsMC4wNzg3MjEyNzA5NDI5NjQ5LDAuMDMxODg0MTEzOTU0ODk3NywtMC4wMDYyNTcxNDIzMjgyOTQzMSwtMC4wMzAyMDc5NDc3NTA3MjQ2LC0wLjAzODM1Mjg5NTA4OTQzMTYsLTAuMDMyODkxNjIzMTIyMDQ1OSwtMC4wMTg3ODcyODg4NDM1NTc2LC0wLjAwMjExMTYxOTkxODAwODcsMC4wMTE2OTAyMjkzMjQ3NzA2LDAuMDE5MTIxNzE4NDEwMzIwNSwwLjAxOTIyNjA0MzA0MzIyMjEsMC4wMTMzNzkyODIxODk1OTAxLDAuMDA0NDYyMDM3NTA0NTc5MzQsLTAuMDA0MjU0NjQwNzYwMDYxMDIsLTAuMDEwMTM4ODAwNDE1NzkwNCwtMC4wMTE4NTQwMDUxNjg5MDU1LC0wLjAwOTUxMzMwMTM2MTU1NDkyLC0wLjAwNDM3NTk0MjU3MTk3MjU4LDAuMDAxNzM2MzM4NDg4NDU3NjgsMC4wMDcwNzM5MzE0NjgzMDcyNSwwLjAxMDQ0MjkxNTUwMTQ5MywwLjAxMTQyMTg4NDQ4NTM5MzMsMC4wMTAzMDQ4ODYyNzA1ODA5LDAuMDA3ODQ4MDY0NzU3NjQxMjYsMC4wMDQ5NDM1ODA5NjkxNzM1MSwwLjAwMjMzODU5MDQyMjE3MzE0LDQuNzIzNDAxNDgzMDE0MjVFLTQsLTUuNDg0MTI5ODEyMzU3NDZFLTQsLTguNjg4MjQzMzQ1MzgzMjlFLTQsLTcuNTUyNzI2MzIyNjAzNjhFLTQsLTQuNzI4NjY5MzI0OTk0MzNFLTQsLTIuMjc3MTk1NTM3MTAxODRFLTQ=::UmVhbCBDb2VmZmljaWVudCBWYWx1ZXM=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZOdW0=::NzA=::TnVtYmVyIG9mIENvZWZmaWNpZW50cw==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRSZWFsVmFsdWVJbWFn::MC4wLCAwLjAsIDAuMCwgMC4wLCAwLjAsIDAuMCwgMC4wLCAwLjAsIDAuMCwgMC4wLCAwLjAsIDAuMCwgLTAuMDUzMDA5MywgLTAuMDQ0OTgsIDAuMCwgMC4wNzQ5NjkzLCAwLjE1OTAzNCwgMC4yMjQ5MDcsIDAuMjQ5ODA5LCAwLjIyNDkwNywgMC4xNTkwMzQsIDAuMDc0OTY5MywgMC4wLCAtMC4wNDQ5OCwgLTAuMDUzMDA5MywgLTAuMDMyMTI4MywgMC4wLCAwLjAsIDAuMCwgMC4wLCAwLjAsIDAuMCwgMC4wLCAwLjAsIDAuMCwgMC4wLCAwLjA=::UmVhbCBDb2VmZmljaWVudCBWYWx1ZXMgKEltYWdpbmFyeSBDb21wb25lbnQp" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRTY2FsZVZhbHVl::LTAuMDAwMjI2NTgyNDAzMDEwMDkxNTUsLTAuMDAwNDUzMTY0ODA2MDIwMTgzMSwtMC4wMDA3NDc3MjE5Mjk5MzMzMDIsLTAuMDAwODYxMDEzMTMxNDM4MzQ3OCwtMC4wMDA1NDM3OTc3NjcyMjQyMTk2LDAuMDAwNDUzMTY0ODA2MDIwMTgzMSwwLjAwMjMzMzc5ODc1MTAwMzk0MywwLjAwNDkzOTQ5NjM4NTYxOTk5NiwwLjAwNzgzOTc1MTE0NDE0OTE2NywwLjAxMDI4Njg0MTA5NjY1ODE1NSwwLjAxMTQxOTc1MzExMTcwODYxNCwwLjAxMDQyMjc5MDUzODQ2NDIxLDAuMDA3MDY5MzcwOTczOTE0ODU2LDAuMDAxNzIyMDI2MjYyODc2Njk1NywtMC4wMDQzNzMwNDAzNzgwOTQ3NjYsLTAuMDA5NDkzODAyNjg2MTIyODM1LC0wLjAxMTg1MDI1OTY3NzQyNzc4OCwtMC4wMTAxMjgyMzM0MTQ1NTEwOTIsLTAuMDA0MjM3MDkwOTM2Mjg4NzEyLDAuMDA0NDQxMDE1MDk4OTk3Nzk0LDAuMDEzMzY4MzYxNzc3NTk1NCwwLjAxOTIxNDE4Nzc3NTI1NTc2MywwLjAxOTEwMDg5NjU3Mzc1MDcxNiwwLjAxMTY2ODk5Mzc1NTAxOTcxNCwtMC4wMDIxMDcyMTYzNDc5OTM4NTE1LC0wLjAxODc4MzY4MTIwOTUzNjU5LC0wLjAzMjg3NzEwNjY3Njc2NDI4LC0wLjAzODMzNzc0MjU4OTMwNzQ4NiwtMC4wMzAyMDM0MzQzMjEyNDUyMDIsLTAuMDA2MjUzNjc0MzIzMDc4NTI2NSwwLjAzMTg4MDE0NDEwMzUxOTg4LDAuMDc4NzE0NzI2ODA1NzA1OCwwLjEyNTkxMTg0MTM1MjcwNzg2LDAuMTY0MTU4OTUwOTgwODExMzIsMC4xODU1OTM2NDYzMDU1NjYsMC4xODU1OTM2NDYzMDU1NjYsMC4xNjQxNTg5NTA5ODA4MTEzMiwwLjEyNTkxMTg0MTM1MjcwNzg2LDAuMDc4NzE0NzI2ODA1NzA1OCwwLjAzMTg4MDE0NDEwMzUxOTg4LC0wLjAwNjI1MzY3NDMyMzA3ODUyNjUsLTAuMDMwMjAzNDM0MzIxMjQ1MjAyLC0wLjAzODMzNzc0MjU4OTMwNzQ4NiwtMC4wMzI4NzcxMDY2NzY3NjQyOCwtMC4wMTg3ODM2ODEyMDk1MzY1OSwtMC4wMDIxMDcyMTYzNDc5OTM4NTE1LDAuMDExNjY4OTkzNzU1MDE5NzE0LDAuMDE5MTAwODk2NTczNzUwNzE2LDAuMDE5MjE0MTg3Nzc1MjU1NzYzLDAuMDEzMzY4MzYxNzc3NTk1NCwwLjAwNDQ0MTAxNTA5ODk5Nzc5NCwtMC4wMDQyMzcwOTA5MzYyODg3MTIsLTAuMDEwMTI4MjMzNDE0NTUxMDkyLC0wLjAxMTg1MDI1OTY3NzQyNzc4OCwtMC4wMDk0OTM4MDI2ODYxMjI4MzUsLTAuMDA0MzczMDQwMzc4MDk0NzY2LDAuMDAxNzIyMDI2MjYyODc2Njk1NywwLjAwNzA2OTM3MDk3MzkxNDg1NiwwLjAxMDQyMjc5MDUzODQ2NDIxLDAuMDExNDE5NzUzMTExNzA4NjE0LDAuMDEwMjg2ODQxMDk2NjU4MTU1LDAuMDA3ODM5NzUxMTQ0MTQ5MTY3LDAuMDA0OTM5NDk2Mzg1NjE5OTk2LDAuMDAyMzMzNzk4NzUxMDAzOTQzLDAuMDAwNDUzMTY0ODA2MDIwMTgzMSwtMC4wMDA1NDM3OTc3NjcyMjQyMTk2LC0wLjAwMDg2MTAxMzEzMTQzODM0NzgsLTAuMDAwNzQ3NzIxOTI5OTMzMzAyLC0wLjAwMDQ1MzE2NDgwNjAyMDE4MzEsLTAuMDAwMjI2NTgyNDAzMDEwMDkxNTU=::U2NhbGVkIENvZWZmaWNpZW50IFZhbHVlcw==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRTY2FsZVZhbHVlSW1hZw==::MC4wLDAuMCwwLjAsMC4wLDAuMCwwLjAsMC4wLDAuMA==::U2NhbGVkIENvZWZmaWNpZW50IFZhbHVlcyAoSW1hZ2luYXJ5IENvbXBvbmVudCk=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRGaXhlZFZhbHVl::LTEwLC0yMCwtMzMsLTM4LC0yNCwyMCwxMDMsMjE4LDM0Niw0NTQsNTA0LDQ2MCwzMTIsNzYsLTE5MywtNDE5LC01MjMsLTQ0NywtMTg3LDE5Niw1OTAsODQ4LDg0Myw1MTUsLTkzLC04MjksLTE0NTEsLTE2OTIsLTEzMzMsLTI3NiwxNDA3LDM0NzQsNTU1Nyw3MjQ1LDgxOTEsODE5MSw3MjQ1LDU1NTcsMzQ3NCwxNDA3LC0yNzYsLTEzMzMsLTE2OTIsLTE0NTEsLTgyOSwtOTMsNTE1LDg0Myw4NDgsNTkwLDE5NiwtMTg3LC00NDcsLTUyMywtNDE5LC0xOTMsNzYsMzEyLDQ2MCw1MDQsNDU0LDM0NiwyMTgsMTAzLDIwLC0yNCwtMzgsLTMzLC0yMCwtMTA=::Rml4ZWQtcG9pbnQgQ29lZmZpY2llbnQgVmFsdWVz" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRGaXhlZFZhbHVlSW1hZw==::MCwwLDAsMCwwLDAsMCww::Rml4ZWQtcG9pbnQgQ29lZmZpY2llbnQgVmFsdWVzIChJbWFnaW5hcnkgQ29tcG9uZW50KQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZTY2FsaW5n::YXV0bw==::Q29lZmZpY2llbnQgU2NhbGluZw==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZUeXBl::aW50::Q29lZmZpY2llbnQgRGF0YSBUeXBl" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZCaXRXaWR0aA==::MTQ=::Q29lZmZpY2llbnQgV2lkdGg=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y29lZmZDb21wbGV4::ZmFsc2U=::Q29tcGxleCBDb2VmZmljaWVudHM=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "a2FyYXRzdWJh::ZmFsc2U=::S2FyYXRzdWJhIEltcGxlbWVudGF0aW9u" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0VHlwZQ==::aW50::T3V0cHV0IFR5cGU=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0TVNCUm91bmQ=::dHJ1bmM=::U3BlY2lmaWVzIHdoZXRoZXIgdG8gdHJ1bmNhdGUgb3Igc2F0dXJhdGUgdGhlIG1vc3Qgc2lnbmlmaWNhbnQgYml0IChNU0IpLg==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0TXNiQml0UmVt::Mw==::TVNCIEJpdHMgdG8gUmVtb3Zl" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0TFNCUm91bmQ=::dHJ1bmM=::U3BlY2lmaWVzIHdoZXRoZXIgdG8gdHJ1bmNhdGUgb3Igcm91bmQgdGhlIGxlYXN0IHNpZ25pZmljYW50IGJpdCAoTFNCKS4=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0THNiQml0UmVt::MA==::TFNCIEJpdHMgdG8gUmVtb3Zl" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "aW5wdXRJbnRlcmZhY2VOdW0=::MQ==::TnVtYmVyIG9mIFBhcmFsbGVsIElucHV0IFN5bWJvbHM=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0cHV0SW50ZXJmYWNlTnVt::Mw==::TnVtYmVyIG9mIFBhcmFsbGVsIE91dHB1dCBTeW1ib2xz" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y2hhblBlcklucHV0SW50ZXJmYWNl::MQ==::TnVtYmVyIG9mIENoYW5uZWxzIHBlciBJbnB1dCBJbnRlcmZhY2U=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "Y2hhblBlck91dHB1dEludGVyZmFjZQ==::MQ==::TnVtYmVyIG9mIENoYW5uZWxzIHBlciBPdXRwdXQgSW50ZXJmYWNl" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "bGF0ZW5jeQ==::MTc=::bGF0ZW5jeQ==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "b3V0cHV0Zmlmb2RlcHRo::MTY=::b3V0cHV0Zmlmb2RlcHRo" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZnVuY1Jlc3VsdA==::LWludGVycD0zIC1kZWNpbT0xIC1pbmN5Y2xlcz0xIC1sZW49NzAgLWJhbmtjb3VudD0xIC1zeW0gLW5iYW5kPTEgLWNoYW5zPTEgLWZhbWlseT0iQ3ljbG9uZSBJViBFIiAKfHt9fDF8M3wxfDF8MzV8MHwxN3w4fG5vQ29kZXxMVVRTOiA0NjExIERTUHM6IDE3IFJBTSBCaXRzOiAwfA==::ZnVuY1Jlc3VsdA==" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "YnVzQWRkcmVzc1dpZHRo::Ng==::YnVzQWRkcmVzc1dpZHRo" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "YmFua0NvdW50::MQ==::TnVtYmVyIG9mIENvZWZmaWNpZW50IEJhbmtz" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "YmFua0luV2lkdGg=::MA==::YmFua0luV2lkdGg=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "YmFua0Rpc3BsYXk=::MA==::YmFua0Rpc3BsYXk=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "bHV0Q291bnQ=::NDYxMQ==::TnVtYmVyIG9mIExVVHM=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZHNwQ291bnQ=::MTc=::TnVtYmVyIG9mIERTUHM=" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "bWVtQml0Q291bnQ=::MA==::TnVtYmVyIG9mIE1lbW9yeSBCaXRz" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_COMPONENT_PARAMETER "ZXJyb3JMaXN0::MA==::ZXJyb3JMaXN0" -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name VERILOG_FILE LP.v -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/dspba_library_package.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/dspba_library.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/auk_dspip_math_pkg_hpfir.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/auk_dspip_lib_pkg_hpfir.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/auk_dspip_avalon_streaming_controller_hpfir.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/auk_dspip_avalon_streaming_sink_hpfir.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/auk_dspip_avalon_streaming_source_hpfir.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/auk_dspip_roundsat_hpfir.vhd -qip LP.qip -library LP
+set_global_assignment -name VERILOG_FILE LP/altera_avalon_sc_fifo.v -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/LP_0002_rtl_core.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/LP_0002_ast.vhd -qip LP.qip -library LP
+set_global_assignment -name VHDL_FILE LP/LP_0002.vhd -qip LP.qip -library LP
+set_global_assignment -name IP_TOOL_NAME altera_fir_compiler_ii -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_TOOL_VERSION 20.1 -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name IP_TOOL_ENV mwpim -entity LP_0002 -qip LP.qip -library LP
+set_global_assignment -name SIP_FILE LP.sip
+set_global_assignment -name IP_TOOL_NAME altera_fir_compiler_ii -entity LP -sip LP.sip -library lib_LP
+set_global_assignment -name IP_TOOL_VERSION 20.1 -entity LP -sip LP.sip -library lib_LP
+set_global_assignment -name IP_TOOL_ENV mwpim -entity LP -sip LP.sip -library lib_LP
+set_global_assignment -name SPD_FILE LP.spd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/dspba_library_package.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/dspba_library.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/auk_dspip_math_pkg_hpfir.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/auk_dspip_lib_pkg_hpfir.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/auk_dspip_avalon_streaming_controller_hpfir.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/auk_dspip_avalon_streaming_sink_hpfir.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/auk_dspip_avalon_streaming_source_hpfir.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/auk_dspip_roundsat_hpfir.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/altera_avalon_sc_fifo.v -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_rtl_core.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_ast.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_nativelink.tcl -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_msim.tcl -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_tb.vhd -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_mlab.m -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_model.m -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_coef_int.txt -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_input.txt -sip LP.sip -library lib_LP
+set_global_assignment -name MISC_FILE LP_sim/LP_param.txt -sip LP.sip -library lib_LP
+set_global_assignment -name VERILOG_FILE Modelsim/filter_test_tb.v
+set_global_assignment -name QIP_FILE ram.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip ram.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip ram.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip ram.qip
+set_global_assignment -name VERILOG_FILE ram.v -qip ram.qip
+set_global_assignment -name VERILOG_FILE controller.v
+set_global_assignment -name QIP_FILE filtered_ram.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip filtered_ram.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip filtered_ram.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip filtered_ram.qip
+set_global_assignment -name VERILOG_FILE filtered_ram.v -qip filtered_ram.qip
+set_global_assignment -name QIP_FILE delays_ram.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip delays_ram.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip delays_ram.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip delays_ram.qip
+set_global_assignment -name VERILOG_FILE delays_ram.v -qip delays_ram.qip
+set_global_assignment -name QIP_FILE output_ram.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip output_ram.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip output_ram.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip output_ram.qip
+set_global_assignment -name VERILOG_FILE output_ram.v -qip output_ram.qip
+set_global_assignment -name QIP_FILE processed_ram.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip processed_ram.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip processed_ram.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip processed_ram.qip
+set_global_assignment -name VERILOG_FILE processed_ram.v -qip processed_ram.qip
+set_global_assignment -name QIP_FILE sum_ram.qip
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT" -qip sum_ram.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip sum_ram.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip sum_ram.qip
+set_global_assignment -name VERILOG_FILE sum_ram.v -qip sum_ram.qip
+set_global_assignment -name QIP_FILE PLL.qip
+set_global_assignment -name IP_TOOL_NAME ALTPLL -qip PLL.qip
+set_global_assignment -name IP_TOOL_VERSION 20.1 -qip PLL.qip
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "\{Cyclone IV E\}" -qip PLL.qip
+set_global_assignment -name VERILOG_FILE PLL.v -qip PLL.qip
+set_global_assignment -name MISC_FILE PLL.ppf -qip PLL.qip

@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at controller.v(128): always construct contains both blocking and non-blocking assignments File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 128
+Warning (10268): Verilog HDL information at controller.v(173): always construct contains both blocking and non-blocking assignments File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 173

@@ -2,11 +2,10 @@ module communication (
 	input CLOCK_50,
 	input START,
 	input STOP,
-	input [7:0] data_in, //set transmit data
-	input [1:0] KEY, // used to start transmission
+	input [9:0] data_in, //set transmit data
 	input transmit_en,
-	output [15:0] LEDR, // display received data
-	output reg [7:0] LEDG, // display transmit data
+	//output [15:0] LEDR, // display received data
+	//output reg [7:0] LEDG, // display transmit data
 	output UART_TXD, // transmit bit
 	input UART_RXD,
 	output wr_en,
@@ -69,7 +68,7 @@ module communication (
 	always @ (posedge CLOCK_50) begin
 		if (transmit_en == 1'b1 && TX_BUSY == 1'b0) begin // on enable signal and while a stream isn't happening
 			TX_START <= 1'b1; //start
-			LEDG <= data_in[7:0];
+			//LEDG <= data_in[7:0];
 		end else begin
 			TX_START <= 1'b0;
 		end

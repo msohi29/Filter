@@ -3,9 +3,12 @@ module controller(
 	input clk50,
 	input com_start,
 	input com_stop,
-	input [1:0] com_key, // used to start transmission
-	output [15:0] com_LEDR, // display received data
-	output [7:0] com_LEDG, // display transmit data
+	input reset_key,
+	//output [15:0] com_LEDR, // display received data
+	//output [7:0] com_LEDG, // display transmit data
+	output reg [0:6]seg,
+	output reg [0:6]seg1,
+	output reg [0:6]seg2,
 	output com_UART_TXD, // transmit bit
 	input com_UART_RXD
 );
@@ -72,7 +75,7 @@ wire com_tx_rdy;
 //filter_test ff1	(clk, reset, data_in, filt_valid, data_out);
 PLL pll1				(pll_reset, clk50, clk, pll_locked);
 //RAM rr1				(clk, read_en, addr, out);
-communication com	(clk, com_start, com_stop, com_tx_data, com_key, com_tx_en, com_LEDR, com_LEDG, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr, com_tx_rdy);
+communication com	(clk, com_start, com_stop, com_tx_data, com_tx_en, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr, com_tx_rdy);
 ram rr1				(clk, ram_data_in, ram_read_addr, ram_read_en, ram_write_addr, ram_write_en, ram_data_out);
 filter_test ff1	(clk, reset, ram_data_out, filt_valid, data_out);
 filtered_ram rr2	(clk, data_out, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
@@ -113,7 +116,49 @@ parameter phaselock_s  = 0,
 			 sending_s    = 6,
 			 done_s		  = 7;
 			 
-reg [2:0] state = phaselock_s;
+reg [3:0] state = phaselock_s;
+
+always @ (posedge clk) begin
+	case (state)
+		0: seg <= ~7'b1111110;
+		1:	seg <= ~7'b0110000;
+		2:	seg <= ~7'b1101101;
+		3:	seg <= ~7'b1111001;
+		4:	seg <= ~7'b0110011;
+		5:	seg <= ~7'b1011011;
+		6:	seg <= ~7'b1011111;
+		7:	seg <= ~7'b1110000;
+		8:	seg1 <= ~7'b1111111;
+		9:	seg1 <= ~7'b1110011;
+		default: seg1 <= 7'b0000000;
+	endcase
+	case (state)
+		0: seg1 <= ~7'b1111110;
+		1:	seg1 <= ~7'b0110000;
+		2:	seg1 <= ~7'b1101101;
+		3:	seg1 <= ~7'b1111001;
+		4:	seg1 <= ~7'b0110011;
+		5:	seg1 <= ~7'b1011011;
+		6:	seg1 <= ~7'b1011111;
+		7:	seg1 <= ~7'b1110000;
+		8:	seg1 <= ~7'b1111111;
+		9:	seg1 <= ~7'b1110011;
+		default: seg1 <= 7'b0000000;
+	endcase
+	case (state)
+		0: seg2 <= ~7'b1111110;
+		1:	seg2 <= ~7'b0110000;
+		2:	seg2 <= ~7'b1101101;
+		3:	seg2 <= ~7'b1111001;
+		4:	seg2 <= ~7'b0110011;
+		5:	seg2 <= ~7'b1011011;
+		6:	seg2 <= ~7'b1011111;
+		7:	seg2 <= ~7'b1110000;
+		8:	seg2 <= ~7'b1111111;
+		9:	seg2 <= ~7'b1110011;
+		default: seg2 <= 7'b0000000;
+	endcase
+end
 
 always @ (posedge clk) begin
 	
@@ -125,286 +170,321 @@ always @ (posedge clk) begin
 	filt_write_en <= 0;
 end
 			 
-always @ (posedge clk, posedge state) begin
+always @ (posedge clk, posedge state, negedge reset_key) begin
 
-case (state)
-	phaselock_s:	begin
-							pll_reset = 0;
-							if(pll_locked) begin
-								state = receiving_s;
+	if(!reset_key) begin
+		i = 0;
+		j = 0;
+		k = 0;
+		l = 0;
+		d = 0;
+		p = 0;
+		q = 0;
+		s = 0;
+		t = 0;
+		filt_state = 0;
+		pll_reset = 1;
+		com_tx_en <= 0;
+		internal_state = 0;
+		state <= phaselock_s;
+	end
+	else begin
+	case (state)
+		phaselock_s:	begin
+								pll_reset = 0;
+								if(pll_locked) begin
+									state = receiving_s;
+								end
 							end
-						end
 
-	receiving_s:	begin
-						state = filtering_s;
-						end
-	
-	filtering_s:	begin
-	
-//						if(i && (i % 2048)) begin
-							ram_read_addr <= i;
-							ram_read_en <= 1;
-//						end
-	
-						
-						if(i >= 13) begin
-							filtering <= 1;
-							j <= j + 1;
-						end
-						
-						if(i < 16383) begin
-							i <= i + 1;
-						end
-						
-						if(i == 16383 && j == 2048) begin
+		receiving_s:	begin
+							state = filtering_s;
+							end
+		
+		filtering_s:	begin
+		
+	//						if(i && (i % 2048)) begin
+								ram_read_addr <= i;
+								ram_read_en <= 1;
+	//						end
+		
+							
+							if(i >= 13) begin
+								filtering <= 1;
+								j <= j + 1;
+							end
+							
+							if(i < 16383) begin
+								i <= i + 1;
+							end
+							
+							if(i == 16383 && j == 2048) begin
+									filtering <= 0;
+									j <= 0;
+									i <= 0;
+									reset <= 0;
+									state <= summing_s;
+								end
+							
+							
+							if( j == 2048) begin
 								filtering <= 0;
 								j <= 0;
-								i <= 0;
-								reset <= 0;
-								state <= summing_s;
-							end
-						
-						
-						if( j == 2048) begin
-							filtering <= 0;
-							j <= 0;
-							state <= processing_s;
-						end
-						end
-						
-	processing_s:	begin
-	
-							case (q)
-							0: begin
-								filt_read_addr <= p;
-								filt_read_en <= 1;
-								q <= 1;
-								end
-							1: begin
-								q <= 2;
-								end
-							2: begin
-								q <= 3;
-								end
-							3: begin
-								proc_ram_data_in <= filt_ram_data_out[31:0];
-								proc_write_addr <= (3*p) + (q-3);
-								proc_write_en <= 1;
-								proc_read_en <= 0;
-								q <= 4;
-								end
-							4:	begin
-								proc_ram_data_in <= filt_ram_data_out[63:32];
-								proc_write_addr <= (3*p) + (q-3);
-								proc_write_en <= 1;
-								proc_read_en <= 0;
-								q <= 5;
-								end
-							5: begin
-								proc_ram_data_in <= filt_ram_data_out[95:64];
-								proc_write_addr <= (3*p) + (q-3);
-								proc_write_en <= 1;
-								proc_read_en <= 0;
-								p <= p + 1;
 								q <= 0;
+								state <= processing_s;
+							end
+							end
+							
+		processing_s:	begin
+		
+								case (q)
+								0: begin
+									filt_read_addr <= p;
+									filt_read_en <= 1;
+									q <= 1;
+									end
+								1: begin
+									q <= 2;
+									end
+								2: begin
+									q <= 3;
+									end
+								3: begin
+									proc_ram_data_in <= filt_ram_data_out[31:0];
+									proc_write_addr <= (3*p) + (q-3);
+									proc_write_en <= 1;
+									proc_read_en <= 0;
+									q <= 4;
+									end
+								4:	begin
+									proc_ram_data_in <= filt_ram_data_out[63:32];
+									proc_write_addr <= (3*p) + (q-3);
+									proc_write_en <= 1;
+									proc_read_en <= 0;
+									q <= 5;
+									end
+								5: begin
+									proc_ram_data_in <= filt_ram_data_out[95:64];
+									proc_write_addr <= (3*p) + (q-3);
+									proc_write_en <= 1;
+									proc_read_en <= 0;
+									p <= p + 1;
+									q <= 0;
+									end
+								endcase
+								
+								if(p >= 2048) begin
+									q <= 0;
+									p <= 0;
+									state <= indexing_s;
 								end
-							endcase
-							
-							if(p >= 2048) begin
-								p <= 0;
-								state <= indexing_s;
 							end
-						end
-	
-	indexing_s:		begin
-						
-						case (internal_state)
-						
-						0: begin
-							delay_read_addr <= (768*l) + k;
-							delay_read_en <= 1;
-							delay_write_en <= 0;
-							internal_state <= 1;
-							end
+		
+		indexing_s:		begin
 							
-						1: begin
-							internal_state <= 2;
-							end
-							
-						2:	begin
-							internal_state <= 3;
-							end
-	
-						3: begin
-							proc_read_addr <= delay_ram_data_out;
-							proc_read_en <= 1;
-							proc_write_en <= 0;
-							internal_state <= 4;
-							end
-						
-						4: begin
-							output_ram_data_in <= proc_ram_data_out;
-							internal_state <= 5;
-							end
-						
-						5: begin
-							
-							output_write_addr <= (768*l) + k;
-							output_write_en <= 1;
-							output_read_en <= 0;
-							k <= k + 1;
-							internal_state <= 0;
-							end
-						
-						endcase
-							
-						if(k == 768) begin
-							l = l + 1;
-							k <= 0;
-							if(l < 7) begin
-								state <= filtering_s;
-							end
-							else begin
-								i <= 0;
-								state <= summing_s;
-							end
-							
-						end
-						end
-						
-	summing_s:		begin
-						
-						if(s < 8) begin
-							output_read_addr <= t + (768*s);
-							output_read_en <= 1;
-							output_write_en <= 0;
-							
-							case (s)
-								0: begin
-									s <= 1;
-									end
-								1: begin
-										data_1 <= output_ram_data_out;
-										s <= 2;
-									end
-								2: begin
-										data_2 <= output_ram_data_out;
-										s <= 3;
-									end
-								3: begin
-										data_3 <= output_ram_data_out;
-										s <= 4;
-									end
-								4: begin
-										data_4 <= output_ram_data_out;
-										s <= 5;
-									end
-								5: begin
-										data_5 <= output_ram_data_out;
-										s <= 6;
-									end
-								6:	begin
-										data_6 <= output_ram_data_out;
-										s <= 7;
-									end
-								7: begin
-										data_7 <= output_ram_data_out; 
-										s <= 8;
-									end
-							endcase
-						end else begin
-							s <= 0;
-							data_8 <= output_ram_data_out;
-							
-							sum <= data_1 + data_2 + data_3 + data_4 + data_5 + data_6 + data_7 + data_8;
-							
-							sum_ram_data_in <= sum;
-							sum_write_addr <= t;
-							sum_write_en <= 1;
-							sum_read_en <= 0;
-							
-							t <= t + 1;
-						end
-						
-						if(t == 768) begin
-							t <= 0;
-							state <= sending_s;
-						end
-	
-						end
-						
-	sending_s:		begin
 							case (internal_state)
-								// initiate read
-								0: begin
-										com_tx_en = 0;
-										if(com_tx_rdy) begin
-											sum_read_addr <= i;
-											sum_read_en <= 1;
-											sum_write_en <= 0;
-										
-											internal_state = 1;
+							
+							0: begin
+								delay_read_addr <= (768*l) + k;
+								delay_read_en <= 1;
+								delay_write_en <= 0;
+								internal_state <= 1;
+								end
+								
+							1: begin
+								internal_state <= 2;
+								end
+								
+							2:	begin
+								internal_state <= 3;
+								end
+		
+							3: begin
+								proc_read_addr <= delay_ram_data_out;
+								proc_read_en <= 1;
+								proc_write_en <= 0;
+								internal_state <= 4;
+								end
+							
+							4: begin
+								output_ram_data_in <= proc_ram_data_out;
+								internal_state <= 5;
+								end
+							
+							5: begin
+								
+								output_write_addr <= (768*l) + k;
+								output_write_en <= 1;
+								output_read_en <= 0;
+								k <= k + 1;
+								internal_state <= 0;
+								end
+							
+							endcase
+								
+							if(k == 768) begin
+								l = l + 1;
+								k <= 0;
+								if(l < 7) begin
+									state <= filtering_s;
+								end
+								else begin
+									i <= 0;
+									state <= summing_s;
+								end
+								
+							end
+							end
+							
+		summing_s:		begin
+							
+							if(s < 8) begin
+								output_read_addr <= t + (768*s);
+								output_read_en <= 1;
+								output_write_en <= 0;
+								
+								case (s)
+									0: begin
+										s <= 1;
 										end
-									end
-								// send byte 1
-								1: begin
-										com_tx_en = 0;
-										if(com_tx_rdy) begin
-											com_tx_data = sum_ram_data_out[39:32];
-											com_tx_en = 1;
-											internal_state = 2;
+									1: begin
+											data_1 <= output_ram_data_out;
+											s <= 2;
 										end
-									end
-								// send byte 2
-								2: begin
-										com_tx_en = 0;
-										if(com_tx_rdy) begin
-											com_tx_data = sum_ram_data_out[31:24];
-											com_tx_en = 1;
-											internal_state = 3;
+									2: begin
+											data_2 <= output_ram_data_out;
+											s <= 3;
 										end
-									end
-								// send byte 3
-								3: begin
-										com_tx_en = 0;
-										if(com_tx_rdy) begin
-											com_tx_data = sum_ram_data_out[23:16];
-											com_tx_en = 1;
-											internal_state = 4;
+									3: begin
+											data_3 <= output_ram_data_out;
+											s <= 4;
 										end
-									end
-								// send byte 4
-								4: begin
-										com_tx_en = 0;
-										if(com_tx_rdy) begin
-											com_tx_data = sum_ram_data_out[15:8];
-											com_tx_en = 1;
-											internal_state = 5;
+									4: begin
+											data_4 <= output_ram_data_out;
+											s <= 5;
 										end
-									end
-								// send byte 5
-								5: begin
-										com_tx_en = 0;
-										if(com_tx_rdy) begin
-											com_tx_data = sum_ram_data_out[7:0];
-											com_tx_en = 1;
-											internal_state = 0;
-											i <= i+1;
-											if(i >= 768) begin
-												state <= done_s;
+									5: begin
+											data_5 <= output_ram_data_out;
+											s <= 6;
+										end
+									6:	begin
+											data_6 <= output_ram_data_out;
+											s <= 7;
+										end
+									7: begin
+											data_7 <= output_ram_data_out; 
+											s <= 8;
+										end
+								endcase
+							end else begin
+								s <= 0;
+								data_8 <= output_ram_data_out;
+								
+								sum <= data_1 + data_2 + data_3 + data_4 + data_5 + data_6 + data_7 + data_8;
+								
+								sum_ram_data_in <= sum;
+								sum_write_addr <= t;
+								sum_write_en <= 1;
+								sum_read_en <= 0;
+								
+								t <= t + 1;
+							end
+							
+							if(t == 768) begin
+								t <= 0;
+								i<=0;
+								internal_state <= 0;
+								state <= sending_s;
+							end
+		
+							end
+							
+		sending_s:		begin
+								case (internal_state)
+									// initiate read
+									0: begin
+											com_tx_en = 0;
+											if(com_tx_rdy) begin
+												sum_read_addr <= i;
+												sum_read_en <= 1;
+												sum_write_en <= 0;
+											
+												internal_state = 1;
 											end
 										end
-									end
-							endcase
+									1: begin
+										internal_state = 2;
+										end
+									2: begin
+										internal_state = 3;
+										end
+									// send byte 1
+									3: begin
+											com_tx_en = 0;
+											if(com_tx_rdy) begin
+												com_tx_data = sum_ram_data_out[39:32];
+//												com_tx_data <= "a";
+												com_tx_en = 1;
+												internal_state = 4;
+											end
+										end
+									// send byte 2
+									4: begin
+											com_tx_en = 0;
+											if(com_tx_rdy) begin
+												com_tx_data = sum_ram_data_out[31:24];
+//												com_tx_data <= "a";
+												com_tx_en = 1;
+												internal_state = 5;
+											end
+										end
+									// send byte 3
+									5: begin
+											com_tx_en = 0;
+											if(com_tx_rdy) begin
+												com_tx_data = sum_ram_data_out[23:16];
+//												com_tx_data <= "a";
+												com_tx_en = 1;
+												internal_state = 6;
+											end
+										end
+									// send byte 4
+									6: begin
+											com_tx_en = 0;
+											if(com_tx_rdy) begin
+												com_tx_data = sum_ram_data_out[15:8];
+												com_tx_data <= "a";
+												com_tx_en = 1;
+												internal_state = 7;
+											end
+										end
+									// send byte 5
+									7: begin
+											com_tx_en = 0;
+											if(com_tx_rdy) begin
+												com_tx_data = sum_ram_data_out[7:0];
+//												com_tx_data <= "M";
+												com_tx_en = 1;
+												internal_state = 0;
+												i <= i+1;
+												if(i >= 768) begin
+													
+													state <= done_s;
+												end
+											end
+										end
+								endcase
+								
+							end
 							
-						end
-						
-	done_s:			begin
-							i <= 1;
-						end
+		done_s:			begin
+								com_tx_en <= 0;
+								state <= done_s;
+							end
 
-endcase
+	endcase
 
-end
+	end
+	end
 
 endmodule

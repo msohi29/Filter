@@ -8,7 +8,7 @@ module TX (
 	reg [12:0] PRSCL; // counter for baud rate of 9600
 	reg [3:0] INDEX; // index to tell which bit in word has been send
 	reg [9:0] DATAFLL; // data with stop bit
-	reg TX_FLG;
+	reg TX_FLG = 0;
 	
 	assign BUSY = TX_FLG; // minor optimization
 	
