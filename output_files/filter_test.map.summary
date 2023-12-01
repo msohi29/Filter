@@ -1,4 +1,4 @@
-Analysis & Synthesis Status : Successful - Fri Dec 01 15:21:25 2023
+Analysis & Synthesis Status : Successful - Fri Dec 01 15:54:16 2023
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : filter_test
 Top-level Entity Name : controller
@@ -7,7 +7,7 @@ Total logic elements : 1,550
     Total combinational functions : 1,542
     Dedicated logic registers : 71
 Total registers : 71
-Total pins : 27
+Total pins : 25
 Total virtual pins : 0
 Total memory bits : 681,984
 Embedded Multiplier 9-bit elements : 0

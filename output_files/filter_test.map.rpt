@@ -1,5 +1,5 @@
 Analysis & Synthesis report for filter_test
-Fri Dec 01 15:21:25 2023
+Fri Dec 01 15:54:16 2023
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -123,11 +123,12 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 115. Port Connectivity Checks: "filter_test:ff1"
 116. Port Connectivity Checks: "ram:rr1"
 117. Port Connectivity Checks: "communication:com|RX:C2"
-118. Port Connectivity Checks: "PLL:pll1"
-119. Post-Synthesis Netlist Statistics for Top Partition
-120. Elapsed Time Per Partition
-121. Analysis & Synthesis Messages
-122. Analysis & Synthesis Suppressed Messages
+118. Port Connectivity Checks: "communication:com"
+119. Port Connectivity Checks: "PLL:pll1"
+120. Post-Synthesis Netlist Statistics for Top Partition
+121. Elapsed Time Per Partition
+122. Analysis & Synthesis Messages
+123. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -154,7 +155,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Dec 01 15:21:25 2023       ;
+; Analysis & Synthesis Status        ; Successful - Fri Dec 01 15:54:16 2023       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; filter_test                                 ;
 ; Top-level Entity Name              ; controller                                  ;
@@ -163,7 +164,7 @@ https://fpgasoftware.intel.com/eula.
 ;     Total combinational functions  ; 1,542                                       ;
 ;     Dedicated logic registers      ; 71                                          ;
 ; Total registers                    ; 71                                          ;
-; Total pins                         ; 27                                          ;
+; Total pins                         ; 25                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 681,984                                     ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -368,7 +369,7 @@ https://fpgasoftware.intel.com/eula.
 ;     -- Dedicated logic registers            ; 71                                                                          ;
 ;     -- I/O registers                        ; 0                                                                           ;
 ;                                             ;                                                                             ;
-; I/O pins                                    ; 27                                                                          ;
+; I/O pins                                    ; 25                                                                          ;
 ; Total memory bits                           ; 681984                                                                      ;
 ;                                             ;                                                                             ;
 ; Embedded Multiplier 9-bit elements          ; 0                                                                           ;
@@ -378,8 +379,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                                                                             ;
 ; Maximum fan-out node                        ; PLL:pll1|altpll:altpll_component|PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 261                                                                         ;
-; Total fan-out                               ; 9428                                                                        ;
-; Average fan-out                             ; 5.08                                                                        ;
+; Total fan-out                               ; 9426                                                                        ;
+; Average fan-out                             ; 5.09                                                                        ;
 +---------------------------------------------+-----------------------------------------------------------------------------+
 
 
@@ -388,7 +389,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                          ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+-----------------+--------------+
-; |controller                               ; 1542 (1493)         ; 71 (32)                   ; 681984      ; 0            ; 0       ; 0         ; 27   ; 0            ; |controller                                                                                  ; controller      ; work         ;
+; |controller                               ; 1542 (1493)         ; 71 (32)                   ; 681984      ; 0            ; 0       ; 0         ; 25   ; 0            ; |controller                                                                                  ; controller      ; work         ;
 ;    |PLL:pll1|                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controller|PLL:pll1                                                                         ; PLL             ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controller|PLL:pll1|altpll:altpll_component                                                 ; altpll          ; work         ;
 ;          |PLL_altpll:auto_generated|      ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controller|PLL:pll1|altpll:altpll_component|PLL_altpll:auto_generated                       ; PLL_altpll      ; work         ;
@@ -460,12 +461,12 @@ Encoding Type:  One-Hot
 +------------------------------------------------------+---------------------+------------------------+
 ; Latch Name                                           ; Latch Enable Signal ; Free of Timing Hazards ;
 +------------------------------------------------------+---------------------+------------------------+
-; state.0110_12710                                     ; Selector170         ; yes                    ;
-; state.0101_12726                                     ; Selector170         ; yes                    ;
-; state.0100_12742                                     ; Selector170         ; yes                    ;
-; state.0011_12758                                     ; Selector170         ; yes                    ;
-; state.0010_12774                                     ; Selector170         ; yes                    ;
-; state.0111_12694                                     ; Selector170         ; yes                    ;
+; state.0110_12717                                     ; Selector170         ; yes                    ;
+; state.0101_12733                                     ; Selector170         ; yes                    ;
+; state.0100_12749                                     ; Selector170         ; yes                    ;
+; state.0011_12765                                     ; Selector170         ; yes                    ;
+; state.0010_12781                                     ; Selector170         ; yes                    ;
+; state.0111_12701                                     ; Selector170         ; yes                    ;
 ; i[0]                                                 ; Selector167         ; yes                    ;
 ; i[1]                                                 ; Selector167         ; yes                    ;
 ; i[2]                                                 ; Selector167         ; yes                    ;
@@ -3234,8 +3235,8 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |controller|communication:com|TX_STATE[0] ;
 ; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |controller|communication:com|data_in[0]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |controller|j[25]                         ;
-; 3:1                ; 44 bits   ; 88 LEs        ; 88 LEs               ; 0 LEs                  ; No         ; |controller|Selector154                   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |controller|j[24]                         ;
+; 3:1                ; 44 bits   ; 88 LEs        ; 88 LEs               ; 0 LEs                  ; No         ; |controller|Selector116                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 
 
@@ -5833,6 +5834,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++-----------------------------------------------+
+; Port Connectivity Checks: "communication:com" ;
++-------+-------+----------+--------------------+
+; Port  ; Type  ; Severity ; Details            ;
++-------+-------+----------+--------------------+
+; START ; Input ; Info     ; Stuck at VCC       ;
+; STOP  ; Input ; Info     ; Stuck at GND       ;
++-------+-------+----------+--------------------+
+
+
 +------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "PLL:pll1"                                                                             ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
@@ -5848,7 +5859,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 27                          ;
+; boundary_port         ; 25                          ;
 ; cycloneiii_ff         ; 71                          ;
 ;     ENA               ; 32                          ;
 ;     ENA SCLR          ; 13                          ;
@@ -5877,7 +5888,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -5887,7 +5898,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Fri Dec 01 15:21:09 2023
+    Info: Processing started: Fri Dec 01 15:54:04 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off filter_test -c filter_test
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -5963,9 +5974,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file sum_ram
 Info (12021): Found 1 design units, including 1 entities, in source file pll.v
     Info (12023): Found entity 1: PLL File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/PLL.v Line: 40
 Info (12127): Elaborating entity "controller" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at controller.v(19): object "data_in" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 19
-Warning (10036): Verilog HDL or VHDL warning at controller.v(22): object "filtered" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 22
-Warning (10036): Verilog HDL or VHDL warning at controller.v(25): object "read_en" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 25
+Warning (10036): Verilog HDL or VHDL warning at controller.v(17): object "data_in" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 17
+Warning (10036): Verilog HDL or VHDL warning at controller.v(20): object "filtered" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 20
+Warning (10036): Verilog HDL or VHDL warning at controller.v(23): object "read_en" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 23
 Warning (10036): Verilog HDL or VHDL warning at controller.v(90): object "d" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 90
 Warning (10036): Verilog HDL or VHDL warning at controller.v(93): object "delay_idx" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 93
 Warning (10036): Verilog HDL or VHDL warning at controller.v(94): object "filt_data" assigned a value but never read File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 94
@@ -5974,25 +5985,26 @@ Warning (10036): Verilog HDL or VHDL warning at controller.v(96): object "output
 Warning (10762): Verilog HDL Case Statement warning at controller.v(136): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 136
 Warning (10762): Verilog HDL Case Statement warning at controller.v(149): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 149
 Warning (10230): Verilog HDL assignment warning at controller.v(168): truncated value with size 32 to match size of target (11) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 168
-Warning (10230): Verilog HDL assignment warning at controller.v(190): truncated value with size 32 to match size of target (14) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 190
-Warning (10230): Verilog HDL assignment warning at controller.v(225): truncated value with size 32 to match size of target (11) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 225
-Warning (10230): Verilog HDL assignment warning at controller.v(237): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 237
-Warning (10230): Verilog HDL assignment warning at controller.v(244): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 244
-Warning (10230): Verilog HDL assignment warning at controller.v(251): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 251
-Warning (10762): Verilog HDL Case Statement warning at controller.v(223): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 223
-Warning (10270): Verilog HDL Case Statement warning at controller.v(223): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 223
-Warning (10230): Verilog HDL assignment warning at controller.v(271): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 271
-Warning (10230): Verilog HDL assignment warning at controller.v(299): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 299
-Warning (10762): Verilog HDL Case Statement warning at controller.v(268): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 268
-Warning (10270): Verilog HDL Case Statement warning at controller.v(268): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 268
-Warning (10230): Verilog HDL assignment warning at controller.v(325): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 325
-Warning (10762): Verilog HDL Case Statement warning at controller.v(329): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 329
-Warning (10270): Verilog HDL Case Statement warning at controller.v(329): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 329
-Warning (10230): Verilog HDL assignment warning at controller.v(369): truncated value with size 32 to match size of target (10) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 369
+Warning (10230): Verilog HDL assignment warning at controller.v(194): truncated value with size 32 to match size of target (14) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 194
+Warning (10230): Verilog HDL assignment warning at controller.v(229): truncated value with size 32 to match size of target (11) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 229
+Warning (10230): Verilog HDL assignment warning at controller.v(241): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 241
+Warning (10230): Verilog HDL assignment warning at controller.v(248): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 248
+Warning (10230): Verilog HDL assignment warning at controller.v(255): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 255
+Warning (10762): Verilog HDL Case Statement warning at controller.v(227): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 227
+Warning (10270): Verilog HDL Case Statement warning at controller.v(227): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 227
+Warning (10230): Verilog HDL assignment warning at controller.v(275): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 275
+Warning (10230): Verilog HDL assignment warning at controller.v(303): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 303
+Warning (10762): Verilog HDL Case Statement warning at controller.v(272): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 272
+Warning (10270): Verilog HDL Case Statement warning at controller.v(272): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 272
+Warning (10230): Verilog HDL assignment warning at controller.v(329): truncated value with size 32 to match size of target (13) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 329
+Warning (10762): Verilog HDL Case Statement warning at controller.v(333): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 333
+Warning (10270): Verilog HDL Case Statement warning at controller.v(333): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 333
+Warning (10230): Verilog HDL assignment warning at controller.v(373): truncated value with size 32 to match size of target (10) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 373
 Warning (10270): Verilog HDL Case Statement warning at controller.v(175): incomplete case statement has no default case item File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 175
 Info (10264): Verilog HDL Case Statement information at controller.v(175): all case item expressions in this case statement are onehot File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 175
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "pll_reset", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "state", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "com_rx_start", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "ram_read_addr", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "ram_read_en", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "filtering", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
@@ -6034,8 +6046,8 @@ Warning (10240): Verilog HDL Always Construct warning at controller.v(174): infe
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "sum_write_en", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "t", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (10240): Verilog HDL Always Construct warning at controller.v(174): inferring latch(es) for variable "com_tx_en", which holds its previous value in one or more paths through the always construct File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (10030): Net "ram_data_in" at controller.v(32) has no driver or initial value, using a default initial value '0' File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 32
-Warning (10030): Net "delay_ram_data_in" at controller.v(50) has no driver or initial value, using a default initial value '0' File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 50
+Warning (10030): Net "ram_data_in" at controller.v(30) has no driver or initial value, using a default initial value '0' File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 30
+Warning (10030): Net "delay_ram_data_in" at controller.v(48) has no driver or initial value, using a default initial value '0' File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 48
 Info (10041): Inferred latch for "com_tx_en" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "t[0]" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "t[1]" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
@@ -6867,6 +6879,7 @@ Info (10041): Inferred latch for "ram_read_addr[10]" at controller.v(174) File: 
 Info (10041): Inferred latch for "ram_read_addr[11]" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "ram_read_addr[12]" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "ram_read_addr[13]" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Info (10041): Inferred latch for "com_rx_start" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "state.1001" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "state.1000" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Info (10041): Inferred latch for "state.0111" at controller.v(174) File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
@@ -6983,7 +6996,6 @@ Info (12133): Instantiated megafunction "ram:rr1|altsyncram:altsyncram_component
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_fj32.tdf
     Info (12023): Found entity 1: altsyncram_fj32 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/altsyncram_fj32.tdf Line: 32
 Info (12128): Elaborating entity "altsyncram_fj32" for hierarchy "ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File /home/manav/intelFPGA_lite/Projects/IC_design/Beamformer/beamformer/raw_data.mif -- setting all initial values to 0 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/ram.v Line: 92
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_jsa.tdf
     Info (12023): Found entity 1: decode_jsa File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/decode_jsa.tdf Line: 23
 Info (12128): Elaborating entity "decode_jsa" for hierarchy "ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|decode_jsa:decode2" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/altsyncram_fj32.tdf Line: 46
@@ -7221,7 +7233,6 @@ Info (12133): Instantiated megafunction "delays_ram:rr4|altsyncram:altsyncram_co
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_q412.tdf
     Info (12023): Found entity 1: altsyncram_q412 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/altsyncram_q412.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_q412" for hierarchy "delays_ram:rr4|altsyncram:altsyncram_component|altsyncram_q412:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File /home/manav/intelFPGA_lite/Projects/IC_design/delays.mif -- setting all initial values to 0 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/delays_ram.v Line: 92
 Info (12128): Elaborating entity "output_ram" for hierarchy "output_ram:rr5" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 86
 Info (12128): Elaborating entity "sum_ram" for hierarchy "sum_ram:rr6" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 87
 Info (12128): Elaborating entity "altsyncram" for hierarchy "sum_ram:rr6|altsyncram:altsyncram_component" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/sum_ram.v Line: 92
@@ -7312,146 +7323,146 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "sum_ram:rr6|altsyncram:altsyncram_component|altsyncram_kiq1:auto_generated|q_b[18]" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/altsyncram_kiq1.tdf Line: 634
         Warning (14320): Synthesized away node "sum_ram:rr6|altsyncram:altsyncram_component|altsyncram_kiq1:auto_generated|q_b[17]" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/altsyncram_kiq1.tdf Line: 601
         Warning (14320): Synthesized away node "sum_ram:rr6|altsyncram:altsyncram_component|altsyncram_kiq1:auto_generated|q_b[16]" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/db/altsyncram_kiq1.tdf Line: 568
-Warning (13012): Latch state.0110_12710 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12726 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch state.0101_12726 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12742 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch state.0100_12742 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12758 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch state.0011_12758 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch state.0010_12774 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12742 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch state.0111_12694 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch state.0110_12717 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12733 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch state.0101_12733 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12749 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch state.0100_12749 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12765 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch state.0011_12765 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch state.0010_12781 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12749 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch state.0111_12701 has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[1] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[2] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[3] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[4] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[5] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[6] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[7] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[8] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[9] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[10] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[11] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[12] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[13] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[14] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[15] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[16] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[17] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[18] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[19] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[20] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[21] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[22] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[23] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[24] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[25] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[26] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[27] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[28] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[29] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[30] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch i[31] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12774 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0010_12781 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[1] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[2] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[3] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[4] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[5] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[6] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[7] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[8] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[9] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[10] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[11] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[12] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[13] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[14] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[15] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[16] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[17] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[18] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[19] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[20] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[21] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[22] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[23] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[24] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[25] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[26] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[27] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[28] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[29] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[30] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch j[31] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12694 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0111_12701 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch t[9] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
     Warning (13013): Ports D and ENA on the latch are fed by the same signal t[31] File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch t[8] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
@@ -7507,11 +7518,11 @@ Warning (13012): Latch p[29] has unsafe behavior File: C:/Users/macdo/OneDrive/D
 Warning (13012): Latch p[30] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
     Warning (13013): Ports D and ENA on the latch are fed by the same signal p[31] File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch internal_state[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12726 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12733 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch internal_state[1] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
     Warning (13013): Ports D and ENA on the latch are fed by the same signal internal_state[2] File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch internal_state[2] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12726 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12733 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch p[10] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
     Warning (13013): Ports D and ENA on the latch are fed by the same signal p[31] File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch p[9] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
@@ -7535,19 +7546,19 @@ Warning (13012): Latch p[1] has unsafe behavior File: C:/Users/macdo/OneDrive/Do
 Warning (13012): Latch p[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
     Warning (13013): Ports D and ENA on the latch are fed by the same signal p[31] File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch q[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12758 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12765 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch q[1] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12758 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12765 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch q[2] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12758 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch output_write_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 54
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12726 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch output_read_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 54
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12726 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch proc_write_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12742 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
-Warning (13012): Latch proc_read_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12742 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0011_12765 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch output_write_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 52
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12733 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch output_read_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 52
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0101_12733 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch proc_write_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 39
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12749 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (13012): Latch proc_read_en has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 39
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal state.0100_12749 File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch proc_ram_data_in[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
     Warning (13013): Ports D and ENA on the latch are fed by the same signal q[0] File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
 Warning (13012): Latch proc_write_addr[0] has unsafe behavior File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
@@ -7645,22 +7656,20 @@ Info (17049): 854 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/output_files/filter_test.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 4 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "com_start" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 4
-    Warning (15610): No output dependent on input pin "com_stop" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 5
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "reset_key" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 6
-    Warning (15610): No output dependent on input pin "com_UART_RXD" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 14
-Info (21057): Implemented 1783 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 5 input pins
+    Warning (15610): No output dependent on input pin "com_UART_RXD" File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 12
+Info (21057): Implemented 1781 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
     Info (21059): Implemented 22 output pins
     Info (21061): Implemented 1566 logic cells
     Info (21064): Implemented 189 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 484 warnings
-    Info: Peak virtual memory: 4913 megabytes
-    Info: Processing ended: Fri Dec 01 15:21:25 2023
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:16
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 481 warnings
+    Info: Peak virtual memory: 4910 megabytes
+    Info: Processing ended: Fri Dec 01 15:54:16 2023
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:17
 
 
 +------------------------------------------+

@@ -1,11 +1,9 @@
 module controller(
 	//input clk
 	input clk50,
-	input com_start,
-	input com_stop,
+	//input com_start,
+	//input com_stop,
 	input reset_key,
-	//output [15:0] com_LEDR, // display received data
-	//output [7:0] com_LEDG, // display transmit data
 	output reg [0:6]seg,
 	output reg [0:6]seg1,
 	output reg [0:6]seg2,
@@ -71,12 +69,14 @@ wire pll_locked;
 reg com_tx_en = 0;
 reg [7:0]com_tx_data;
 wire com_tx_rdy;
+reg com_rx_start = 0;
+reg com_rx_stop = 0;
 
 //RAM rr1				(clk, read_en, addr, out);
 //filter_test ff1	(clk, reset, data_in, filt_valid, data_out);
 PLL pll1				(pll_reset, clk50, clk, pll_locked);
 //RAM rr1				(clk, read_en, addr, out);
-communication com	(clk, com_start, com_stop, sum_ram_data_out, com_tx_en, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr,sum_read_en, sum_read_addr);
+communication com	(clk, com_rx_start, com_rx_stop, sum_ram_data_out, com_tx_en, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr,sum_read_en, sum_read_addr);
 ram rr1				(clk, ram_data_in, ram_read_addr, ram_read_en, ram_write_addr, ram_write_en, ram_data_out);
 filter_test ff1	(clk, reset, ram_data_out, filt_valid, data_out);
 filtered_ram rr2	(clk, data_out, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
@@ -181,7 +181,11 @@ always @ (posedge clk, negedge reset_key) begin
 							end
 
 		receiving_s:	begin
-							state = filtering_s;
+								com_rx_start = 1;
+								if(ram_write_addr >= 16384) begin
+									com_rx_stop <= 1;
+									state <= filtering_s;
+								end
 							end
 		
 		filtering_s:	begin

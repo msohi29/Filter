@@ -64,12 +64,8 @@ set_location_assignment PIN_Y2 -to clk50
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk50
 set_location_assignment PIN_G12 -to com_UART_RXD
 set_location_assignment PIN_G9 -to com_UART_TXD
-set_location_assignment PIN_N21 -to com_start
-set_location_assignment PIN_R24 -to com_stop
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_UART_RXD
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_UART_TXD
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_start
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to com_stop
 set_location_assignment PIN_F22 -to seg[1]
 set_location_assignment PIN_E17 -to seg[2]
 set_location_assignment PIN_L26 -to seg[3]
