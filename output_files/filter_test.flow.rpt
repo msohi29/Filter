@@ -1,6 +1,6 @@
 Flow report for filter_test
-Fri Dec  1 13:23:43 2023
-Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Fri Dec 01 15:22:29 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
 ---------------------
@@ -41,20 +41,20 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Dec  1 13:23:43 2023       ;
-; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Flow Status                        ; Successful - Fri Dec 01 15:22:29 2023       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; filter_test                                 ;
 ; Top-level Entity Name              ; controller                                  ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 694 / 114,480 ( < 1 % )                     ;
-;     Total combinational functions  ; 694 / 114,480 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 46 / 114,480 ( < 1 % )                      ;
-; Total registers                    ; 46                                          ;
+; Total logic elements               ; 1,547 / 114,480 ( 1 % )                     ;
+;     Total combinational functions  ; 1,542 / 114,480 ( 1 % )                     ;
+;     Dedicated logic registers      ; 71 / 114,480 ( < 1 % )                      ;
+; Total registers                    ; 71                                          ;
 ; Total pins                         ; 27 / 529 ( 5 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
+; Total memory bits                  ; 681,984 / 3,981,312 ( 17 % )                ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 +------------------------------------+---------------------------------------------+
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/01/2023 13:22:48 ;
+; Start date & time ; 12/01/2023 15:21:09 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; filter_test         ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+--------------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+--------------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 190135466415036.170145136811836                        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 226907288329981.170145846929740                        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -126,26 +126,26 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 482 MB              ; 00:00:27                           ;
-; Fitter               ; 00:00:30     ; 1.0                     ; 887 MB              ; 00:00:41                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 359 MB              ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 501 MB              ; 00:00:03                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 607 MB              ; 00:00:01                           ;
-; Total                ; 00:00:52     ; --                      ; --                  ; 00:01:16                           ;
+; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4913 MB             ; 00:00:16                           ;
+; Fitter               ; 00:00:51     ; 1.2                     ; 6746 MB             ; 00:00:50                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4701 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.7                     ; 5015 MB             ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4663 MB             ; 00:00:01                           ;
+; Total                ; 00:01:14     ; --                      ; --                  ; 00:01:12                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+----------------------+------------------+----------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
-+----------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; Manav-ubuntu     ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; Fitter               ; Manav-ubuntu     ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; Assembler            ; Manav-ubuntu     ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; Timing Analyzer      ; Manav-ubuntu     ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; EDA Netlist Writer   ; Manav-ubuntu     ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-+----------------------+------------------+----------------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; Jacob-Dell       ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; Jacob-Dell       ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; Jacob-Dell       ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; Jacob-Dell       ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; Jacob-Dell       ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------

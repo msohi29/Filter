@@ -57,8 +57,9 @@ reg [12:0]output_write_addr = 0;
 reg [31:0]output_ram_data_in;
 wire [31:0]output_ram_data_out;
 
-reg sum_read_en = 0, sum_write_en = 0;
-reg [9:0]sum_read_addr = 0;
+wire sum_read_en; 
+reg sum_write_en = 0;
+wire [9:0]sum_read_addr;
 reg [9:0]sum_write_addr = 0;
 reg [39:0]sum_ram_data_in;
 wire [39:0]sum_ram_data_out;
@@ -75,7 +76,7 @@ wire com_tx_rdy;
 //filter_test ff1	(clk, reset, data_in, filt_valid, data_out);
 PLL pll1				(pll_reset, clk50, clk, pll_locked);
 //RAM rr1				(clk, read_en, addr, out);
-communication com	(clk, com_start, com_stop, com_tx_data, com_tx_en, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr, com_tx_rdy);
+communication com	(clk, com_start, com_stop, sum_ram_data_out, com_tx_en, com_UART_TXD, com_UART_RXD, ram_write_en, ram_write_addr,sum_read_en, sum_read_addr);
 ram rr1				(clk, ram_data_in, ram_read_addr, ram_read_en, ram_write_addr, ram_write_en, ram_data_out);
 filter_test ff1	(clk, reset, ram_data_out, filt_valid, data_out);
 filtered_ram rr2	(clk, data_out, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
@@ -367,7 +368,6 @@ always @ (posedge clk, negedge reset_key) begin
 								sum_ram_data_in <= sum;
 								sum_write_addr <= t;
 								sum_write_en <= 1;
-								sum_read_en <= 0;
 								
 								t <= t + 1;
 							end
@@ -382,79 +382,86 @@ always @ (posedge clk, negedge reset_key) begin
 							end
 							
 		sending_s:		begin
-								case (internal_state)
-									// initiate read
-									0: begin
-											com_tx_en = 0;
-											if(com_tx_rdy) begin
-												sum_read_addr <= i;
-												sum_read_en <= 1;
-												sum_write_en <= 0;
-											
-												internal_state = 1;
-											end
-										end
-									1: begin
-										internal_state = 2;
-										end
-									2: begin
-										internal_state = 3;
-										end
-									// send byte 1
-									3: begin
-											com_tx_en = 0;
-											if(com_tx_rdy) begin
-//												com_tx_data = sum_ram_data_out[39:32];
-												com_tx_data <= "a";
-												com_tx_en = 1;
-												internal_state = 4;
-											end
-										end
-									// send byte 2
-									4: begin
-											com_tx_en = 0;
-											if(com_tx_rdy) begin
-//												com_tx_data = sum_ram_data_out[31:24];
-												com_tx_data <= "b";
-												com_tx_en = 1;
-												internal_state = 5;
-											end
-										end
-									// send byte 3
-									5: begin
-											com_tx_en = 0;
-											if(com_tx_rdy) begin
-//												com_tx_data = sum_ram_data_out[23:16];
-												com_tx_data <= "c";
-												com_tx_en = 1;
-												internal_state = 6;
-											end
-										end
-									// send byte 4
-									6: begin
-											com_tx_en = 0;
-											if(com_tx_rdy) begin
-//												com_tx_data = sum_ram_data_out[15:8];
-												com_tx_data <= "d";
-												com_tx_en = 1;
-												internal_state = 7;
-											end
-										end
-									// send byte 5
-									7: begin
-											com_tx_en = 0;
-											if(com_tx_rdy) begin
-//												com_tx_data = sum_ram_data_out[7:0];
-												com_tx_data <= "M";
-												com_tx_en = 1;
-												internal_state = 0;
-												i <= i+1;
-												if(i >= 768) begin
-													state <= done_s;
-												end
-											end
-										end
-								endcase
+		
+								com_tx_en <= 1;
+								if(sum_read_addr >= 768) begin
+									com_tx_en <= 0;
+									state <= done_s;
+								end
+								
+//								case (internal_state)
+//									// initiate read
+//									0: begin
+//											com_tx_en = 0;
+//											if(com_tx_rdy) begin
+//												sum_read_addr <= i;
+//												sum_read_en <= 1;
+//												sum_write_en <= 0;
+//											
+//												internal_state = 1;
+//											end
+//										end
+//									1: begin
+//										internal_state = 2;
+//										end
+//									2: begin
+//										internal_state = 3;
+//										end
+//									// send byte 1
+//									3: begin
+//											com_tx_en = 0;
+//											if(com_tx_rdy) begin
+////												com_tx_data = sum_ram_data_out[39:32];
+//												com_tx_data <= "a";
+//												com_tx_en = 1;
+//												internal_state = 4;
+//											end
+//										end
+//									// send byte 2
+//									4: begin
+//											com_tx_en = 0;
+//											if(com_tx_rdy) begin
+////												com_tx_data = sum_ram_data_out[31:24];
+//												com_tx_data <= "b";
+//												com_tx_en = 1;
+//												internal_state = 5;
+//											end
+//										end
+//									// send byte 3
+//									5: begin
+//											com_tx_en = 0;
+//											if(com_tx_rdy) begin
+////												com_tx_data = sum_ram_data_out[23:16];
+//												com_tx_data <= "c";
+//												com_tx_en = 1;
+//												internal_state = 6;
+//											end
+//										end
+//									// send byte 4
+//									6: begin
+//											com_tx_en = 0;
+//											if(com_tx_rdy) begin
+////												com_tx_data = sum_ram_data_out[15:8];
+//												com_tx_data <= "d";
+//												com_tx_en = 1;
+//												internal_state = 7;
+//											end
+//										end
+//									// send byte 5
+//									7: begin
+//											com_tx_en = 0;
+//											if(com_tx_rdy) begin
+////												com_tx_data = sum_ram_data_out[7:0];
+//												com_tx_data <= "M";
+//												com_tx_en = 1;
+//												internal_state = 0;
+//												i <= i+1;
+//												if(i >= 768) begin
+//													state <= done_s;
+//												end
+//											end
+//										end
+//								endcase
 								
 							end
 							
