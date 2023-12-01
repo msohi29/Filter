@@ -121,14 +121,13 @@ case (state)
 							i <= i + 1;
 						end
 						
-						if(i == 16383 && j == 2048) begin
-								filtering <= 0;
-								j <= 0;
-								i <= 0;
-								reset <= 0;
-								state <= summing_s;
-							end
-						
+//						if(i == 16383 && j == 2048) begin
+//								filtering <= 0;
+//								j <= 0;
+//								i <= 0;
+//								reset <= 0;
+//								state <= summing_s;
+//							end
 						
 						if( j == 2048) begin
 							filtering <= 0;
