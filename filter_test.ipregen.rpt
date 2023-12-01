@@ -1,5 +1,5 @@
 IP Upgrade report for filter_test
-Thu Nov 30 13:45:00 2023
+Fri Dec  1 12:57:51 2023
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -35,7 +35,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------+
 ; IP Upgrade Summary                                                         ;
 +------------------------------+---------------------------------------------+
-; IP Components Upgrade Status ; Failed - Thu Nov 30 13:45:00 2023           ;
+; IP Components Upgrade Status ; Failed - Fri Dec  1 12:57:51 2023           ;
 ; Quartus Prime Version        ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                ; filter_test                                 ;
 ; Top-level Entity Name        ; controller                                  ;
@@ -48,9 +48,9 @@ https://fpgasoftware.intel.com/eula.
 +---------------------+
 Info (23030): Evaluation of Tcl script /home/manav/intelFPGA_lite/20.1/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
 Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 604 megabytes
-    Info: Processing ended: Thu Nov 30 13:45:00 2023
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Peak virtual memory: 600 megabytes
+    Info: Processing ended: Fri Dec  1 12:57:51 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:22
 
 

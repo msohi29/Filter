@@ -84,29 +84,6 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to seg[4]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to seg[5]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to seg[6]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to seg[0]
-set_global_assignment -name VERILOG_FILE communication.v
-set_global_assignment -name VERILOG_FILE UART.v
-set_global_assignment -name VERILOG_FILE TX.v
-set_global_assignment -name VERILOG_FILE RX.v
-set_global_assignment -name MIF_FILE delays.mif
-set_global_assignment -name QIP_FILE DPRAM.qip
-set_global_assignment -name VERILOG_FILE DPRAM.v
-set_global_assignment -name VERILOG_FILE ram_test.v
-set_global_assignment -name TCL_SCRIPT_FILE Modelsim/filter_test_tb.tcl
-set_global_assignment -name COMMAND_MACRO_FILE Modelsim/wave.do
-set_global_assignment -name SOURCE_FILE LP.cmp
-set_global_assignment -name VERILOG_FILE filter_test.v
-set_global_assignment -name QIP_FILE LP.qip
-set_global_assignment -name SIP_FILE LP.sip
-set_global_assignment -name VERILOG_FILE Modelsim/filter_test_tb.v
-set_global_assignment -name QIP_FILE ram.qip
-set_global_assignment -name VERILOG_FILE controller.v
-set_global_assignment -name QIP_FILE filtered_ram.qip
-set_global_assignment -name QIP_FILE delays_ram.qip
-set_global_assignment -name QIP_FILE output_ram.qip
-set_global_assignment -name QIP_FILE processed_ram.qip
-set_global_assignment -name QIP_FILE sum_ram.qip
-set_global_assignment -name QIP_FILE PLL.qip
 set_location_assignment PIN_Y22 -to seg1[1]
 set_location_assignment PIN_W21 -to seg1[2]
 set_location_assignment PIN_W22 -to seg1[3]
@@ -137,4 +114,27 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to seg2[4]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to seg2[5]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to seg2[6]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to seg2[0]
+set_global_assignment -name VERILOG_FILE communication.v
+set_global_assignment -name VERILOG_FILE UART.v
+set_global_assignment -name VERILOG_FILE TX.v
+set_global_assignment -name VERILOG_FILE RX.v
+set_global_assignment -name MIF_FILE delays.mif
+set_global_assignment -name QIP_FILE DPRAM.qip
+set_global_assignment -name VERILOG_FILE DPRAM.v
+set_global_assignment -name VERILOG_FILE ram_test.v
+set_global_assignment -name TCL_SCRIPT_FILE Modelsim/filter_test_tb.tcl
+set_global_assignment -name COMMAND_MACRO_FILE Modelsim/wave.do
+set_global_assignment -name SOURCE_FILE LP.cmp
+set_global_assignment -name VERILOG_FILE filter_test.v
+set_global_assignment -name QIP_FILE LP.qip
+set_global_assignment -name SIP_FILE LP.sip
+set_global_assignment -name VERILOG_FILE Modelsim/filter_test_tb.v
+set_global_assignment -name QIP_FILE ram.qip
+set_global_assignment -name VERILOG_FILE controller.v
+set_global_assignment -name QIP_FILE filtered_ram.qip
+set_global_assignment -name QIP_FILE delays_ram.qip
+set_global_assignment -name QIP_FILE output_ram.qip
+set_global_assignment -name QIP_FILE processed_ram.qip
+set_global_assignment -name QIP_FILE sum_ram.qip
+set_global_assignment -name QIP_FILE PLL.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

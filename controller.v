@@ -86,7 +86,7 @@ output_ram rr5		(clk, output_ram_data_in, output_read_addr, output_read_en, outp
 sum_ram rr6			(clk, sum_ram_data_in, sum_read_addr, sum_read_en, sum_write_addr, sum_write_en, sum_ram_data_out);
 
 
-integer i = 0, j = 0, k = 0, l = 0, d = 0, p = 0, q = 0, s = 0, t = 0, filt_state = 0, internal_state = 0;
+integer i = 0, j = 0, k = 0, l = 0, d = 0, p = 0, q = 0, s = 0, t = 0, internal_state = 0;
 integer filtering = 0;
 
 reg [12:0]delay_idx = 0;
@@ -132,7 +132,7 @@ always @ (posedge clk) begin
 		9:	seg1 <= ~7'b1110011;
 		default: seg1 <= 7'b0000000;
 	endcase
-	case (state)
+	case (i)
 		0: seg1 <= ~7'b1111110;
 		1:	seg1 <= ~7'b0110000;
 		2:	seg1 <= ~7'b1101101;
@@ -145,7 +145,7 @@ always @ (posedge clk) begin
 		9:	seg1 <= ~7'b1110011;
 		default: seg1 <= 7'b0000000;
 	endcase
-	case (state)
+	case (j)
 		0: seg2 <= ~7'b1111110;
 		1:	seg2 <= ~7'b0110000;
 		2:	seg2 <= ~7'b1101101;
@@ -170,25 +170,7 @@ always @ (posedge clk) begin
 	filt_write_en <= 0;
 end
 			 
-always @ (posedge clk, posedge state, negedge reset_key) begin
-
-	if(!reset_key) begin
-		i = 0;
-		j = 0;
-		k = 0;
-		l = 0;
-		d = 0;
-		p = 0;
-		q = 0;
-		s = 0;
-		t = 0;
-		filt_state = 0;
-		pll_reset = 1;
-		com_tx_en <= 0;
-		internal_state = 0;
-		state <= phaselock_s;
-	end
-	else begin
+always @ (posedge clk, negedge reset_key) begin
 	case (state)
 		phaselock_s:	begin
 								pll_reset = 0;
@@ -422,8 +404,8 @@ always @ (posedge clk, posedge state, negedge reset_key) begin
 									3: begin
 											com_tx_en = 0;
 											if(com_tx_rdy) begin
-												com_tx_data = sum_ram_data_out[39:32];
-//												com_tx_data <= "a";
+//												com_tx_data = sum_ram_data_out[39:32];
+												com_tx_data <= "a";
 												com_tx_en = 1;
 												internal_state = 4;
 											end
@@ -432,8 +414,8 @@ always @ (posedge clk, posedge state, negedge reset_key) begin
 									4: begin
 											com_tx_en = 0;
 											if(com_tx_rdy) begin
-												com_tx_data = sum_ram_data_out[31:24];
-//												com_tx_data <= "a";
+//												com_tx_data = sum_ram_data_out[31:24];
+												com_tx_data <= "b";
 												com_tx_en = 1;
 												internal_state = 5;
 											end
@@ -442,8 +424,8 @@ always @ (posedge clk, posedge state, negedge reset_key) begin
 									5: begin
 											com_tx_en = 0;
 											if(com_tx_rdy) begin
-												com_tx_data = sum_ram_data_out[23:16];
-//												com_tx_data <= "a";
+//												com_tx_data = sum_ram_data_out[23:16];
+												com_tx_data <= "c";
 												com_tx_en = 1;
 												internal_state = 6;
 											end
@@ -452,8 +434,8 @@ always @ (posedge clk, posedge state, negedge reset_key) begin
 									6: begin
 											com_tx_en = 0;
 											if(com_tx_rdy) begin
-												com_tx_data = sum_ram_data_out[15:8];
-												com_tx_data <= "a";
+//												com_tx_data = sum_ram_data_out[15:8];
+												com_tx_data <= "d";
 												com_tx_en = 1;
 												internal_state = 7;
 											end
@@ -462,13 +444,12 @@ always @ (posedge clk, posedge state, negedge reset_key) begin
 									7: begin
 											com_tx_en = 0;
 											if(com_tx_rdy) begin
-												com_tx_data = sum_ram_data_out[7:0];
-//												com_tx_data <= "M";
+//												com_tx_data = sum_ram_data_out[7:0];
+												com_tx_data <= "M";
 												com_tx_en = 1;
 												internal_state = 0;
 												i <= i+1;
 												if(i >= 768) begin
-													
 													state <= done_s;
 												end
 											end
@@ -478,13 +459,13 @@ always @ (posedge clk, posedge state, negedge reset_key) begin
 							end
 							
 		done_s:			begin
-								com_tx_en <= 0;
+//								com_tx_en <= 0;
+								i <= 1;
+								j <= 2;
 								state <= done_s;
 							end
 
 	endcase
-
-	end
 	end
 
 endmodule

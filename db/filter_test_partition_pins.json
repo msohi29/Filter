@@ -90,10 +90,6 @@
 				{
 					"name" : "com_UART_TXD",
 					"strict" : false
-				},
-				{
-					"name" : "reset_key",
-					"strict" : false
 				}
 			]
 		}
