@@ -8,6 +8,7 @@ module communication (
 	input UART_RXD,
 	output wr_en,
 	output reg[13:0] wr_address,
+	output reg[15:0] DATA_BUFF,
 	output rd_en,
 	output reg[9:0] rd_address
 	);
@@ -18,8 +19,6 @@ module communication (
 	reg  [7:0] data_in; // output buffer for TX
 	reg TX_START;
 	wire RX_BUSY; // used to prevent a receive event during receive stream
-	reg [15:0] DATA_BUFF = 0;
-	reg [13:0] wr_addr = 0;
 	reg RX_BUSY_BUFF;
 	reg RX_STATE = 0;
 	reg START_RX;
@@ -40,7 +39,7 @@ module communication (
 		.BUSY(RX_BUSY));
 	
 	assign wr_en = (!RX_BUSY & START_RX);
-	assign rd_en = (!TX_BUSY & TX_EN);
+	assign rd_en = (!TX_BUSY & TX_START);
 	
 	always @ (posedge CLOCK_50) begin
 		RX_BUSY_BUFF <= RX_BUSY;
@@ -52,11 +51,11 @@ module communication (
 			end else if (RX_STATE) begin
 				DATA_BUFF[15:8] <= RX_DATA[7:0];
 				RX_STATE <= 0;
-				wr_addr <= wr_addr + 1;
+				wr_address <= wr_address + 1;
 			end
 		end
 		
-		if (!START) begin
+		if (START) begin
 			START_RX <= 1;
 		end else if (STOP) begin
 			START_RX <= 0;
@@ -64,35 +63,44 @@ module communication (
 		
 	end
 	
+	integer state = 0;
+	
 	always @ (posedge CLOCK_50) begin
-	
-	
-		if (TX_EN == 1'b1 && TX_BUSY == 1'b0) begin // on enable signal and while a stream isn't happening
+		if (TX_EN && !TX_BUSY) begin // on enable signal and while a stream isn't happening
+			case (state) 
+			0: begin
+				TX_START <= 1'b1; //start
+				state <= 1;
+				end
 			
-			TX_START <= 1'b1; //start
+			1: begin
+				state <= 2;
+				end
+				
+			2: begin
+				state <= 3;
+				end
 			
-			if(!TX_STATE[2] & !TX_STATE[1] & !TX_STATE[0]) begin
+			3: begin
 				data_in = rd_data[7:0];
-				TX_STATE = TX_STATE+1;
+				state <= 4;
+				end
 			
-			end else if(!TX_STATE[2] & !TX_STATE[1] & !TX_STATE[0]) begin
+			4: begin
 				data_in = rd_data[15:8];
-				TX_STATE = TX_STATE+1;
+				state <= 5;
+				end
 			
-			end else if(!TX_STATE[2] &  TX_STATE[1] &  TX_STATE[0]) begin
-				data_in = rd_data[23:16];
-				TX_STATE = TX_STATE+1;
-			
-			end else if(!TX_STATE[2] &  TX_STATE[1] &  TX_STATE[0]) begin
+			5: begin
 				data_in = rd_data[31:24];
-				TX_STATE = TX_STATE+1;
+				state = 6;
+				end
 			
-			end else if( TX_STATE[2] & !TX_STATE[1] & !TX_STATE[0]) begin
+			6: begin
 				data_in = rd_data[39:32];
-				TX_STATE = 0;
 				rd_address = rd_address+1;
-			end
-		
+				end
+			endcase
 		end else begin
 			TX_START <= 1'b0;
 		end

@@ -1,2 +1,2 @@
-Warning (10268): Verilog HDL information at communication.v(67): always construct contains both blocking and non-blocking assignments File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/communication.v Line: 67
-Warning (10268): Verilog HDL information at controller.v(174): always construct contains both blocking and non-blocking assignments File: C:/Users/macdo/OneDrive/Documents/ECED 4260/Project/Repo/Filter/controller.v Line: 174
+Warning (10268): Verilog HDL information at communication.v(68): always construct contains both blocking and non-blocking assignments File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/communication.v Line: 68
+Warning (10268): Verilog HDL information at controller.v(158): always construct contains both blocking and non-blocking assignments File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 158

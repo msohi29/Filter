@@ -4,14 +4,16 @@
 module filter_test_tb();
 
 	reg clk;
+	wire com_UART_TXD;
+	reg com_UART_RXD;
+	reg reset_key = 1;
 	
-	controller c1(clk);
+	controller c1(clk, reset_key, com_UART_TXD, com_UART_RXD);
 	
 	initial begin	
 		clk <= 0;
 		forever #5 clk <= !clk;
 	end
-
 endmodule
 
 
