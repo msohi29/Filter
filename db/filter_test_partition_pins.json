@@ -88,15 +88,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "clk50",
+					"strict" : false
+				},
+				{
 					"name" : "tx_key",
 					"strict" : false
 				},
 				{
 					"name" : "start_key",
-					"strict" : false
-				},
-				{
-					"name" : "clk50",
 					"strict" : false
 				}
 			]

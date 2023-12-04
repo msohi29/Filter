@@ -1,5 +1,5 @@
 Analysis & Synthesis report for filter_test
-Sun Dec  3 16:30:07 2023
+Mon Dec  4 15:38:44 2023
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -15,14 +15,14 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |controller|internal_state
- 11. State Machine - |controller|sending_state
- 12. State Machine - |controller|mn
- 13. State Machine - |controller|filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state
- 14. Registers Removed During Synthesis
- 15. Removed Registers Triggering Further Register Optimizations
- 16. General Register Statistics
- 17. Inverted Register Statistics
+ 10. State Machine - |controller|sending_state
+ 11. State Machine - |controller|indexing_state
+ 12. State Machine - |controller|state
+ 13. State Machine - |controller|debug
+ 14. State Machine - |controller|filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state
+ 15. Registers Removed During Synthesis
+ 16. Removed Registers Triggering Further Register Optimizations
+ 17. General Register Statistics
  18. Multiplexer Restructuring Statistics (Restructuring Performed)
  19. Source assignments for ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated
  20. Source assignments for filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst
@@ -154,15 +154,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Dec  3 16:30:07 2023       ;
+; Analysis & Synthesis Status        ; Successful - Mon Dec  4 15:38:44 2023       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; filter_test                                 ;
 ; Top-level Entity Name              ; controller                                  ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,285                                       ;
-;     Total combinational functions  ; 852                                         ;
-;     Dedicated logic registers      ; 803                                         ;
-; Total registers                    ; 803                                         ;
+; Total logic elements               ; 1,274                                       ;
+;     Total combinational functions  ; 831                                         ;
+;     Dedicated logic registers      ; 809                                         ;
+; Total registers                    ; 809                                         ;
 ; Total pins                         ; 26                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 700,416                                     ;
@@ -345,20 +345,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                       ;
 +---------------------------------------------+-----------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,285                                                                       ;
+; Estimated Total logic elements              ; 1,274                                                                       ;
 ;                                             ;                                                                             ;
-; Total combinational functions               ; 852                                                                         ;
+; Total combinational functions               ; 831                                                                         ;
 ; Logic element usage by number of LUT inputs ;                                                                             ;
-;     -- 4 input functions                    ; 214                                                                         ;
-;     -- 3 input functions                    ; 325                                                                         ;
-;     -- <=2 input functions                  ; 313                                                                         ;
+;     -- 4 input functions                    ; 203                                                                         ;
+;     -- 3 input functions                    ; 318                                                                         ;
+;     -- <=2 input functions                  ; 310                                                                         ;
 ;                                             ;                                                                             ;
 ; Logic elements by mode                      ;                                                                             ;
-;     -- normal mode                          ; 356                                                                         ;
+;     -- normal mode                          ; 335                                                                         ;
 ;     -- arithmetic mode                      ; 496                                                                         ;
 ;                                             ;                                                                             ;
-; Total registers                             ; 803                                                                         ;
-;     -- Dedicated logic registers            ; 803                                                                         ;
+; Total registers                             ; 809                                                                         ;
+;     -- Dedicated logic registers            ; 809                                                                         ;
 ;     -- I/O registers                        ; 0                                                                           ;
 ;                                             ;                                                                             ;
 ; I/O pins                                    ; 26                                                                          ;
@@ -370,9 +370,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1                                                                           ;
 ;                                             ;                                                                             ;
 ; Maximum fan-out node                        ; PLL:pll1|altpll:altpll_component|PLL_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 1017                                                                        ;
-; Total fan-out                               ; 10716                                                                       ;
-; Average fan-out                             ; 5.58                                                                        ;
+; Maximum fan-out                             ; 1023                                                                        ;
+; Total fan-out                               ; 10754                                                                       ;
+; Average fan-out                             ; 5.64                                                                        ;
 +---------------------------------------------+-----------------------------------------------------------------------------+
 
 
@@ -381,7 +381,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                          ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+-----------------+--------------+
-; |controller                               ; 852 (812)           ; 803 (771)                 ; 700416      ; 0            ; 0       ; 0         ; 26   ; 0            ; |controller                                                                                  ; controller      ; work         ;
+; |controller                               ; 831 (791)           ; 809 (777)                 ; 700416      ; 0            ; 0       ; 0         ; 26   ; 0            ; |controller                                                                                  ; controller      ; work         ;
 ;    |PLL:pll1|                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controller|PLL:pll1                                                                         ; PLL             ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controller|PLL:pll1|altpll:altpll_component                                                 ; altpll          ; work         ;
 ;          |PLL_altpll:auto_generated|      ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controller|PLL:pll1|altpll:altpll_component|PLL_altpll:auto_generated                       ; PLL_altpll      ; work         ;
@@ -434,21 +434,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |controller|internal_state                                                                                                       ;
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-; Name               ; internal_state.101 ; internal_state.100 ; internal_state.011 ; internal_state.010 ; internal_state.001 ; internal_state.000 ;
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-; internal_state.000 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ;
-; internal_state.001 ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 1                  ;
-; internal_state.010 ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 1                  ;
-; internal_state.011 ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 1                  ;
-; internal_state.100 ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 1                  ;
-; internal_state.101 ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ;
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-
-
-Encoding Type:  One-Hot
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; State Machine - |controller|sending_state                                                                                                                                                                                                                                                                                                                          ;
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
@@ -474,22 +459,56 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------+
-; State Machine - |controller|mn                                                                              ;
-+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+
-; Name    ; mn.1001 ; mn.1000 ; mn.0111 ; mn.0110 ; mn.0101 ; mn.0100 ; mn.0011 ; mn.0010 ; mn.0001 ; mn.0000 ;
-+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+
-; mn.0000 ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ;
-; mn.0001 ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ; 1       ;
-; mn.0010 ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ; 0       ; 1       ;
-; mn.0011 ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ; 0       ; 0       ; 1       ;
-; mn.0100 ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ; 0       ; 0       ; 0       ; 1       ;
-; mn.0101 ; 0       ; 0       ; 0       ; 0       ; 1       ; 0       ; 0       ; 0       ; 0       ; 1       ;
-; mn.0110 ; 0       ; 0       ; 0       ; 1       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ;
-; mn.0111 ; 0       ; 0       ; 1       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ;
-; mn.1000 ; 0       ; 1       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ;
-; mn.1001 ; 1       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 0       ; 1       ;
-+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |controller|indexing_state                                                                                                       ;
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+; Name               ; indexing_state.101 ; indexing_state.100 ; indexing_state.011 ; indexing_state.010 ; indexing_state.001 ; indexing_state.000 ;
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+; indexing_state.000 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ;
+; indexing_state.001 ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 1                  ;
+; indexing_state.010 ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 1                  ;
+; indexing_state.011 ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 1                  ;
+; indexing_state.100 ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 1                  ;
+; indexing_state.101 ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ;
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |controller|state                                                                                                                                                            ;
++--------------------+------------+------------+--------------+-----------------+-----------------+------------------+--------------------+-------------------+-------------------+------------+
+; Name               ; state.1001 ; state.1000 ; state.done_s ; state.sending_s ; state.summing_s ; state.indexing_s ; state.processing_s ; state.filtering_s ; state.receiving_s ; state.0000 ;
++--------------------+------------+------------+--------------+-----------------+-----------------+------------------+--------------------+-------------------+-------------------+------------+
+; state.0000         ; 0          ; 0          ; 0            ; 0               ; 0               ; 0                ; 0                  ; 0                 ; 0                 ; 0          ;
+; state.receiving_s  ; 0          ; 0          ; 0            ; 0               ; 0               ; 0                ; 0                  ; 0                 ; 1                 ; 1          ;
+; state.filtering_s  ; 0          ; 0          ; 0            ; 0               ; 0               ; 0                ; 0                  ; 1                 ; 0                 ; 1          ;
+; state.processing_s ; 0          ; 0          ; 0            ; 0               ; 0               ; 0                ; 1                  ; 0                 ; 0                 ; 1          ;
+; state.indexing_s   ; 0          ; 0          ; 0            ; 0               ; 0               ; 1                ; 0                  ; 0                 ; 0                 ; 1          ;
+; state.summing_s    ; 0          ; 0          ; 0            ; 0               ; 1               ; 0                ; 0                  ; 0                 ; 0                 ; 1          ;
+; state.sending_s    ; 0          ; 0          ; 0            ; 1               ; 0               ; 0                ; 0                  ; 0                 ; 0                 ; 1          ;
+; state.done_s       ; 0          ; 0          ; 1            ; 0               ; 0               ; 0                ; 0                  ; 0                 ; 0                 ; 1          ;
+; state.1000         ; 0          ; 1          ; 0            ; 0               ; 0               ; 0                ; 0                  ; 0                 ; 0                 ; 1          ;
+; state.1001         ; 1          ; 0          ; 0            ; 0               ; 0               ; 0                ; 0                  ; 0                 ; 0                 ; 1          ;
++--------------------+------------+------------+--------------+-----------------+-----------------+------------------+--------------------+-------------------+-------------------+------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |controller|debug                                                                                                            ;
++------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+; Name       ; debug.1001 ; debug.1000 ; debug.0111 ; debug.0110 ; debug.0101 ; debug.0100 ; debug.0011 ; debug.0010 ; debug.0001 ; debug.0000 ;
++------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+; debug.0000 ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ;
+; debug.0001 ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 1          ;
+; debug.0010 ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 1          ;
+; debug.0011 ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 1          ;
+; debug.0100 ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 1          ;
+; debug.0101 ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 1          ;
+; debug.0110 ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ;
+; debug.0111 ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ;
+; debug.1000 ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ;
+; debug.1001 ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ;
++------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
 
 
 Encoding Type:  One-Hot
@@ -511,7 +530,6 @@ Encoding Type:  One-Hot
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 ; Register name                                                                                                                                                                              ; Reason for Removal                          ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
-; filt_write_en                                                                                                                                                                              ; Stuck at GND due to stuck port data_in      ;
 ; TX:tt1|DATAFLL[0]                                                                                                                                                                          ; Stuck at GND due to stuck port data_in      ;
 ; TX:tt1|DATAFLL[9]                                                                                                                                                                          ; Stuck at VCC due to stuck port data_in      ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_compute_q_11|delay_signals[0][0]             ; Stuck at GND due to stuck port data_in      ;
@@ -1864,41 +1882,45 @@ Encoding Type:  One-Hot
 ; ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|rden_b_store                                                                                                        ; Lost fanout                                 ;
 ; ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|out_address_reg_b[0]                                                                                                ; Lost fanout                                 ;
 ; ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|address_reg_b[0]                                                                                                    ; Lost fanout                                 ;
-; ram_read_addr[0..13]                                                                                                                                                                       ; Lost fanout                                 ;
 ; ram_read_en                                                                                                                                                                                ; Lost fanout                                 ;
-; delay_write_en                                                                                                                                                                             ; Stuck at GND due to stuck port data_in      ;
+; ram_read_addr[0..13]                                                                                                                                                                       ; Lost fanout                                 ;
 ; sum[39]                                                                                                                                                                                    ; Stuck at GND due to stuck port data_in      ;
+; delay_write_en                                                                                                                                                                             ; Stuck at GND due to stuck port data_in      ;
 ; sum_ram_data_in[39]                                                                                                                                                                        ; Stuck at GND due to stuck port data_in      ;
-; filtering[1..9,11..31]                                                                                                                                                                     ; Merged with filtering[10]                   ;
-; filtering[10]                                                                                                                                                                              ; Stuck at GND due to stuck port data_in      ;
-; s[4]                                                                                                                                                                                       ; Stuck at GND due to stuck port data_in      ;
+; summing_state[4]                                                                                                                                                                           ; Stuck at GND due to stuck port data_in      ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state.start                                                            ; Lost fanout                                 ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state.stall                                                            ; Lost fanout                                 ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state.run1                                                             ; Lost fanout                                 ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state.st_err                                                           ; Lost fanout                                 ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state.end1                                                             ; Lost fanout                                 ;
-; internal_state~4                                                                                                                                                                           ; Lost fanout                                 ;
-; internal_state~5                                                                                                                                                                           ; Lost fanout                                 ;
-; internal_state~6                                                                                                                                                                           ; Lost fanout                                 ;
 ; sending_state~6                                                                                                                                                                            ; Lost fanout                                 ;
 ; sending_state~7                                                                                                                                                                            ; Lost fanout                                 ;
 ; sending_state~8                                                                                                                                                                            ; Lost fanout                                 ;
 ; sending_state~9                                                                                                                                                                            ; Lost fanout                                 ;
-; mn~12                                                                                                                                                                                      ; Lost fanout                                 ;
-; mn~13                                                                                                                                                                                      ; Lost fanout                                 ;
-; mn~14                                                                                                                                                                                      ; Lost fanout                                 ;
-; mn~15                                                                                                                                                                                      ; Lost fanout                                 ;
-; mn.0011                                                                                                                                                                                    ; Merged with mn.0010                         ;
-; mn.0100                                                                                                                                                                                    ; Merged with mn.0010                         ;
-; mn.0101                                                                                                                                                                                    ; Merged with mn.0010                         ;
-; mn.1001                                                                                                                                                                                    ; Merged with mn.0010                         ;
+; indexing_state~4                                                                                                                                                                           ; Lost fanout                                 ;
+; indexing_state~5                                                                                                                                                                           ; Lost fanout                                 ;
+; indexing_state~6                                                                                                                                                                           ; Lost fanout                                 ;
+; state~12                                                                                                                                                                                   ; Lost fanout                                 ;
+; state~13                                                                                                                                                                                   ; Lost fanout                                 ;
+; state~14                                                                                                                                                                                   ; Lost fanout                                 ;
+; state~15                                                                                                                                                                                   ; Lost fanout                                 ;
+; debug~12                                                                                                                                                                                   ; Lost fanout                                 ;
+; debug~13                                                                                                                                                                                   ; Lost fanout                                 ;
+; debug~14                                                                                                                                                                                   ; Lost fanout                                 ;
+; debug~15                                                                                                                                                                                   ; Lost fanout                                 ;
+; state.receiving_s                                                                                                                                                                          ; Merged with state.1000                      ;
+; debug.0011                                                                                                                                                                                 ; Merged with debug.0010                      ;
+; debug.0100                                                                                                                                                                                 ; Merged with debug.0010                      ;
+; debug.0101                                                                                                                                                                                 ; Merged with debug.0010                      ;
+; debug.1001                                                                                                                                                                                 ; Merged with debug.0010                      ;
 ; sending_state.1101                                                                                                                                                                         ; Merged with sending_state.1100              ;
 ; sending_state.1110                                                                                                                                                                         ; Merged with sending_state.1100              ;
 ; sending_state.1111                                                                                                                                                                         ; Merged with sending_state.1100              ;
-; mn.0010                                                                                                                                                                                    ; Stuck at GND due to stuck port data_in      ;
+; state.1000                                                                                                                                                                                 ; Stuck at GND due to stuck port data_in      ;
+; debug.0010                                                                                                                                                                                 ; Stuck at GND due to stuck port data_in      ;
 ; sending_state.1100                                                                                                                                                                         ; Stuck at GND due to stuck port data_in      ;
 ; seg1[2]~reg0                                                                                                                                                                               ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 4893                                                                                                                                                   ;                                             ;
+; Total Number of Removed Registers = 4867                                                                                                                                                   ;                                             ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 
 
@@ -2447,7 +2469,7 @@ Encoding Type:  One-Hot
 ;                                                                                                                                                                                            ;                                ; filter_test:ff1|filt_data_in[15],                                                                                                                                                           ;
 ;                                                                                                                                                                                            ;                                ; ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|out_address_reg_b[0],                                                                                                ;
 ;                                                                                                                                                                                            ;                                ; ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|address_reg_b[0],                                                                                                    ;
-;                                                                                                                                                                                            ;                                ; ram_read_addr[13], ram_read_en                                                                                                                                                              ;
+;                                                                                                                                                                                            ;                                ; ram_read_en, ram_read_addr[13]                                                                                                                                                              ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|u0_m0_wo1_mtree_mult1_22_sub_1_o[18]                                 ; Lost Fanouts                   ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_wi0_r0_phasedelay0_q_12|delay_signals[0][15], ;
 ;                                                                                                                                                                                            ;                                ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_wi0_r0_phasedelay0_q_12|delay_signals[0][14], ;
 ;                                                                                                                                                                                            ;                                ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_wi0_r0_phasedelay0_q_12|delay_signals[0][13], ;
@@ -2724,7 +2746,7 @@ Encoding Type:  One-Hot
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_sym_add1_q_13|delay_signals[0][5]            ; Lost Fanouts                   ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|u0_m0_wo0_sym_add1_o[5]                                               ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_sym_add1_q_13|delay_signals[0][4]            ; Lost Fanouts                   ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|u0_m0_wo0_sym_add1_o[4]                                               ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_sym_add1_q_13|delay_signals[0][3]            ; Lost Fanouts                   ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|u0_m0_wo0_sym_add1_o[3]                                               ;
-; mn.0010                                                                                                                                                                                    ; Stuck at GND                   ; seg1[2]~reg0                                                                                                                                                                                ;
+; debug.0010                                                                                                                                                                                 ; Stuck at GND                   ; seg1[2]~reg0                                                                                                                                                                                ;
 ;                                                                                                                                                                                            ; due to stuck port data_in      ;                                                                                                                                                                                             ;
 ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:u0_m0_wo0_wi0_r0_delayr2|delay_signals[0][14]            ; Stuck at GND                   ; filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_wi0_r0_delayr2_q_11|delay_signals[0][14]      ;
 ;                                                                                                                                                                                            ; due to stuck port clock_enable ;                                                                                                                                                                                             ;
@@ -3096,45 +3118,34 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 803   ;
+; Total registers                              ; 809   ;
 ; Number of registers using Synchronous Clear  ; 80    ;
 ; Number of registers using Synchronous Load   ; 45    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 766   ;
+; Number of registers using Clock Enable       ; 769   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; state[0]                               ; 55      ;
-; Total number of inverted registers = 1 ;         ;
-+----------------------------------------+---------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |controller|k[8]                ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |controller|p[0]                ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |controller|j[2]                ;
-; 8:1                ; 44 bits   ; 220 LEs       ; 88 LEs               ; 132 LEs                ; Yes        ; |controller|proc_ram_data_in[8] ;
-; 18:1               ; 2 bits    ; 24 LEs        ; 2 LEs                ; 22 LEs                 ; Yes        ; |controller|output_write_en     ;
-; 18:1               ; 2 bits    ; 24 LEs        ; 2 LEs                ; 22 LEs                 ; Yes        ; |controller|proc_write_en       ;
-; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |controller|data_in[1]          ;
-; 19:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |controller|i[31]               ;
-; 15:1               ; 3 bits    ; 30 LEs        ; 12 LEs               ; 18 LEs                 ; Yes        ; |controller|state[1]            ;
-; 25:1               ; 3 bits    ; 48 LEs        ; 18 LEs               ; 30 LEs                 ; Yes        ; |controller|q[1]                ;
-; 11:1               ; 6 bits    ; 42 LEs        ; 12 LEs               ; 30 LEs                 ; No         ; |controller|internal_state      ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |controller|mn                  ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |controller|mn                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |controller|k[10]                ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |controller|p[18]                ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |controller|j[6]                 ;
+; 8:1                ; 44 bits   ; 220 LEs       ; 88 LEs               ; 132 LEs                ; Yes        ; |controller|proc_ram_data_in[12] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |controller|proc_write_en        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |controller|output_read_en       ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |controller|data_in[0]           ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |controller|i[4]                 ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |controller|processing_state[0]  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |controller|debug                ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |controller|debug                ;
+; 12:1               ; 6 bits    ; 48 LEs        ; 18 LEs               ; 30 LEs                 ; No         ; |controller|state                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------+
@@ -5717,27 +5728,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 26                          ;
-; cycloneiii_ff         ; 803                         ;
-;     ENA               ; 642                         ;
+; cycloneiii_ff         ; 809                         ;
+;     ENA               ; 645                         ;
 ;     ENA SCLR          ; 80                          ;
 ;     ENA SLD           ; 44                          ;
 ;     SLD               ; 1                           ;
-;     plain             ; 36                          ;
-; cycloneiii_lcell_comb ; 852                         ;
+;     plain             ; 39                          ;
+; cycloneiii_lcell_comb ; 831                         ;
 ;     arith             ; 496                         ;
 ;         2 data inputs ; 248                         ;
 ;         3 data inputs ; 248                         ;
-;     normal            ; 356                         ;
+;     normal            ; 335                         ;
 ;         0 data inputs ; 8                           ;
-;         1 data inputs ; 14                          ;
-;         2 data inputs ; 43                          ;
-;         3 data inputs ; 77                          ;
-;         4 data inputs ; 214                         ;
+;         1 data inputs ; 16                          ;
+;         2 data inputs ; 38                          ;
+;         3 data inputs ; 70                          ;
+;         4 data inputs ; 203                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 213                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 13.90                       ;
-; Average LUT depth     ; 5.29                        ;
+; Max LUT depth         ; 11.30                       ;
+; Average LUT depth     ; 4.93                        ;
 +-----------------------+-----------------------------+
 
 
@@ -5756,7 +5767,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Sun Dec  3 16:29:51 2023
+    Info: Processing started: Mon Dec  4 15:38:29 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off filter_test -c filter_test
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -5818,7 +5829,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file Modelsi
 Info (12021): Found 1 design units, including 1 entities, in source file ram.v
     Info (12023): Found entity 1: ram File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/ram.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file controller.v
-    Info (12023): Found entity 1: controller File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 1
+    Info (12023): Found entity 1: controller File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 21
 Info (12021): Found 1 design units, including 1 entities, in source file filtered_ram.v
     Info (12023): Found entity 1: filtered_ram File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/filtered_ram.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file delays_ram.v
@@ -5832,28 +5843,23 @@ Info (12021): Found 1 design units, including 1 entities, in source file sum_ram
 Info (12021): Found 1 design units, including 1 entities, in source file PLL.v
     Info (12023): Found entity 1: PLL File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/PLL.v Line: 40
 Info (12127): Elaborating entity "controller" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at controller.v(134): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 134
-Warning (10230): Verilog HDL assignment warning at controller.v(151): truncated value with size 32 to match size of target (11) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 151
-Warning (10230): Verilog HDL assignment warning at controller.v(162): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 162
-Warning (10230): Verilog HDL assignment warning at controller.v(168): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 168
-Warning (10230): Verilog HDL assignment warning at controller.v(180): truncated value with size 32 to match size of target (14) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 180
-Warning (10230): Verilog HDL assignment warning at controller.v(206): truncated value with size 32 to match size of target (11) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 206
-Warning (10230): Verilog HDL assignment warning at controller.v(218): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 218
-Warning (10230): Verilog HDL assignment warning at controller.v(225): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 225
-Warning (10230): Verilog HDL assignment warning at controller.v(232): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 232
-Warning (10230): Verilog HDL assignment warning at controller.v(252): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 252
-Warning (10230): Verilog HDL assignment warning at controller.v(280): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 280
-Warning (10230): Verilog HDL assignment warning at controller.v(293): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 293
-Warning (10230): Verilog HDL assignment warning at controller.v(306): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 306
-Warning (10230): Verilog HDL assignment warning at controller.v(350): truncated value with size 32 to match size of target (10) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 350
-Warning (10230): Verilog HDL assignment warning at controller.v(419): truncated value with size 32 to match size of target (10) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 419
-Info (10264): Verilog HDL Case Statement information at controller.v(372): all case item expressions in this case statement are onehot File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 372
-Warning (10230): Verilog HDL assignment warning at controller.v(430): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 430
-Warning (10230): Verilog HDL assignment warning at controller.v(435): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 435
-Warning (10030): Net "ram_write_addr" at controller.v(30) has no driver or initial value, using a default initial value '0' File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 30
-Warning (10030): Net "ram_data_in" at controller.v(31) has no driver or initial value, using a default initial value '0' File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 31
-Warning (10030): Net "ram_write_en" at controller.v(28) has no driver or initial value, using a default initial value '0' File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 28
-Info (12128): Elaborating entity "PLL" for hierarchy "PLL:pll1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 71
+Warning (10230): Verilog HDL assignment warning at controller.v(172): truncated value with size 32 to match size of target (11) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 172
+Warning (10230): Verilog HDL assignment warning at controller.v(204): truncated value with size 32 to match size of target (14) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 204
+Warning (10230): Verilog HDL assignment warning at controller.v(230): truncated value with size 32 to match size of target (11) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 230
+Warning (10230): Verilog HDL assignment warning at controller.v(242): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 242
+Warning (10230): Verilog HDL assignment warning at controller.v(249): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 249
+Warning (10230): Verilog HDL assignment warning at controller.v(256): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 256
+Warning (10230): Verilog HDL assignment warning at controller.v(276): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 276
+Warning (10230): Verilog HDL assignment warning at controller.v(304): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 304
+Warning (10230): Verilog HDL assignment warning at controller.v(330): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 330
+Warning (10230): Verilog HDL assignment warning at controller.v(374): truncated value with size 32 to match size of target (10) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 374
+Warning (10230): Verilog HDL assignment warning at controller.v(442): truncated value with size 32 to match size of target (10) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 442
+Info (10264): Verilog HDL Case Statement information at controller.v(395): all case item expressions in this case statement are onehot File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 395
+Info (10264): Verilog HDL Case Statement information at controller.v(196): all case item expressions in this case statement are onehot File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 196
+Warning (10030): Net "ram_write_addr" at controller.v(42) has no driver or initial value, using a default initial value '0' File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 42
+Warning (10030): Net "ram_data_in" at controller.v(43) has no driver or initial value, using a default initial value '0' File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 43
+Warning (10030): Net "ram_write_en" at controller.v(40) has no driver or initial value, using a default initial value '0' File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 40
+Info (12128): Elaborating entity "PLL" for hierarchy "PLL:pll1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 89
 Info (12128): Elaborating entity "altpll" for hierarchy "PLL:pll1|altpll:altpll_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/PLL.v Line: 104
 Info (12130): Elaborated megafunction instantiation "PLL:pll1|altpll:altpll_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/PLL.v Line: 104
 Info (12133): Instantiated megafunction "PLL:pll1|altpll:altpll_component" with the following parameter: File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/PLL.v Line: 104
@@ -5915,7 +5921,7 @@ Info (12133): Instantiated megafunction "PLL:pll1|altpll:altpll_component" with 
 Info (12021): Found 1 design units, including 1 entities, in source file db/PLL_altpll.v
     Info (12023): Found entity 1: PLL_altpll File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/PLL_altpll.v Line: 31
 Info (12128): Elaborating entity "PLL_altpll" for hierarchy "PLL:pll1|altpll:altpll_component|PLL_altpll:auto_generated" File: /home/manav/intelFPGA_lite/20.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "ram" for hierarchy "ram:rr1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 74
+Info (12128): Elaborating entity "ram" for hierarchy "ram:rr1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 90
 Info (12128): Elaborating entity "altsyncram" for hierarchy "ram:rr1|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/ram.v Line: 92
 Info (12130): Elaborated megafunction instantiation "ram:rr1|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/ram.v Line: 92
 Info (12133): Instantiated megafunction "ram:rr1|altsyncram:altsyncram_component" with the following parameter: File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/ram.v Line: 92
@@ -5949,7 +5955,7 @@ Info (12128): Elaborating entity "decode_jsa" for hierarchy "ram:rr1|altsyncram:
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_iob.tdf
     Info (12023): Found entity 1: mux_iob File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/mux_iob.tdf Line: 23
 Info (12128): Elaborating entity "mux_iob" for hierarchy "ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|mux_iob:mux3" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_fj32.tdf Line: 49
-Info (12128): Elaborating entity "filter_test" for hierarchy "filter_test:ff1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 75
+Info (12128): Elaborating entity "filter_test" for hierarchy "filter_test:ff1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 91
 Info (12128): Elaborating entity "LP" for hierarchy "filter_test:ff1|LP:lp1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/filter_test.v Line: 26
 Info (12128): Elaborating entity "LP_0002" for hierarchy "filter_test:ff1|LP:lp1|LP_0002:lp_inst" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/LP.v Line: 28
 Warning (10036): Verilog HDL or VHDL warning at LP_0002.vhd(54): object "coeff_in_read_sig" assigned a value but never read File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/LP/LP_0002.vhd Line: 54
@@ -6098,7 +6104,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/mult
 Info (12128): Elaborating entity "mult_3eu" for hierarchy "filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|LPM_MULT:u0_m0_wo0_mtree_mult1_0_component|mult_3eu:auto_generated" File: /home/manav/intelFPGA_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 377
 Info (12128): Elaborating entity "dspba_delay" for hierarchy "filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|LP_0002_rtl_core:\real_passthrough:hpfircore_core|dspba_delay:d_u0_m0_wo0_compute_q_16" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/LP/LP_0002_rtl_core.vhd Line: 4248
 Info (12128): Elaborating entity "auk_dspip_roundsat_hpfir" for hierarchy "filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_roundsat_hpfir:\real_passthrough:gen_outp_blk:2:outp_blk" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/LP/LP_0002_ast.vhd Line: 248
-Info (12128): Elaborating entity "filtered_ram" for hierarchy "filtered_ram:rr2" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 76
+Info (12128): Elaborating entity "filtered_ram" for hierarchy "filtered_ram:rr2" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 92
 Info (12128): Elaborating entity "altsyncram" for hierarchy "filtered_ram:rr2|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/filtered_ram.v Line: 92
 Info (12130): Elaborated megafunction instantiation "filtered_ram:rr2|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/filtered_ram.v Line: 92
 Info (12133): Instantiated megafunction "filtered_ram:rr2|altsyncram:altsyncram_component" with the following parameter: File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/filtered_ram.v Line: 92
@@ -6125,7 +6131,7 @@ Info (12133): Instantiated megafunction "filtered_ram:rr2|altsyncram:altsyncram_
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ulq1.tdf
     Info (12023): Found entity 1: altsyncram_ulq1 File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_ulq1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_ulq1" for hierarchy "filtered_ram:rr2|altsyncram:altsyncram_component|altsyncram_ulq1:auto_generated" File: /home/manav/intelFPGA_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "processed_ram" for hierarchy "processed_ram:rr3" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 78
+Info (12128): Elaborating entity "processed_ram" for hierarchy "processed_ram:rr3" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 93
 Info (12128): Elaborating entity "altsyncram" for hierarchy "processed_ram:rr3|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/processed_ram.v Line: 92
 Info (12130): Elaborated megafunction instantiation "processed_ram:rr3|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/processed_ram.v Line: 92
 Info (12133): Instantiated megafunction "processed_ram:rr3|altsyncram:altsyncram_component" with the following parameter: File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/processed_ram.v Line: 92
@@ -6152,7 +6158,7 @@ Info (12133): Instantiated megafunction "processed_ram:rr3|altsyncram:altsyncram
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_glq1.tdf
     Info (12023): Found entity 1: altsyncram_glq1 File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_glq1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_glq1" for hierarchy "processed_ram:rr3|altsyncram:altsyncram_component|altsyncram_glq1:auto_generated" File: /home/manav/intelFPGA_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "delays_ram" for hierarchy "delays_ram:rr4" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 79
+Info (12128): Elaborating entity "delays_ram" for hierarchy "delays_ram:rr4" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 94
 Info (12128): Elaborating entity "altsyncram" for hierarchy "delays_ram:rr4|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/delays_ram.v Line: 92
 Info (12130): Elaborated megafunction instantiation "delays_ram:rr4|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/delays_ram.v Line: 92
 Info (12133): Instantiated megafunction "delays_ram:rr4|altsyncram:altsyncram_component" with the following parameter: File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/delays_ram.v Line: 92
@@ -6180,8 +6186,8 @@ Info (12133): Instantiated megafunction "delays_ram:rr4|altsyncram:altsyncram_co
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_q412.tdf
     Info (12023): Found entity 1: altsyncram_q412 File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_q412.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_q412" for hierarchy "delays_ram:rr4|altsyncram:altsyncram_component|altsyncram_q412:auto_generated" File: /home/manav/intelFPGA_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "output_ram" for hierarchy "output_ram:rr5" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 80
-Info (12128): Elaborating entity "sum_ram" for hierarchy "sum_ram:rr6" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 81
+Info (12128): Elaborating entity "output_ram" for hierarchy "output_ram:rr5" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 95
+Info (12128): Elaborating entity "sum_ram" for hierarchy "sum_ram:rr6" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 96
 Info (12128): Elaborating entity "altsyncram" for hierarchy "sum_ram:rr6|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/sum_ram.v Line: 92
 Info (12130): Elaborated megafunction instantiation "sum_ram:rr6|altsyncram:altsyncram_component" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/sum_ram.v Line: 92
 Info (12133): Instantiated megafunction "sum_ram:rr6|altsyncram:altsyncram_component" with the following parameter: File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/sum_ram.v Line: 92
@@ -6208,7 +6214,7 @@ Info (12133): Instantiated megafunction "sum_ram:rr6|altsyncram:altsyncram_compo
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kiq1.tdf
     Info (12023): Found entity 1: altsyncram_kiq1 File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_kiq1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_kiq1" for hierarchy "sum_ram:rr6|altsyncram:altsyncram_component|altsyncram_kiq1:auto_generated" File: /home/manav/intelFPGA_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "TX" for hierarchy "TX:tt1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 93
+Info (12128): Elaborating entity "TX" for hierarchy "TX:tt1" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 110
 Warning (10230): Verilog HDL assignment warning at TX.v(26): truncated value with size 32 to match size of target (13) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/TX.v Line: 26
 Warning (10230): Verilog HDL assignment warning at TX.v(34): truncated value with size 32 to match size of target (4) File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/TX.v Line: 34
 Warning (14284): Synthesized away the following node(s):
@@ -6246,25 +6252,25 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|ram_block1a30" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_fj32.tdf Line: 1100
         Warning (14320): Synthesized away node "ram:rr1|altsyncram:altsyncram_component|altsyncram_fj32:auto_generated|ram_block1a31" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/db/altsyncram_fj32.tdf Line: 1135
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "seg1[2]" is stuck at GND File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 444
+    Warning (13410): Pin "seg1[2]" is stuck at GND File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 468
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 4036 registers lost all their fanouts during netlist optimizations.
+Info (17049): 4040 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/output_files/filter_test.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "com_UART_RXD" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 13
-Info (21057): Implemented 1566 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "com_UART_RXD" File: /home/manav/intelFPGA_lite/Projects/IC_design/filter_test/controller.v Line: 30
+Info (21057): Implemented 1555 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 22 output pins
-    Info (21061): Implemented 1326 logic cells
+    Info (21061): Implemented 1315 logic cells
     Info (21064): Implemented 213 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 63 warnings
-    Info: Peak virtual memory: 488 megabytes
-    Info: Processing ended: Sun Dec  3 16:30:07 2023
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:29
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 57 warnings
+    Info: Peak virtual memory: 487 megabytes
+    Info: Processing ended: Mon Dec  4 15:38:44 2023
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:28
 
 
 +------------------------------------------+

@@ -1,13 +1,4 @@
 
-State Machine - |controller|internal_state
-Name internal_state.101 internal_state.100 internal_state.011 internal_state.010 internal_state.001 internal_state.000 
-internal_state.000 0 0 0 0 0 0 
-internal_state.001 0 0 0 0 1 1 
-internal_state.010 0 0 0 1 0 1 
-internal_state.011 0 0 1 0 0 1 
-internal_state.100 0 1 0 0 0 1 
-internal_state.101 1 0 0 0 0 1 
-
 State Machine - |controller|sending_state
 Name sending_state.1111 sending_state.1110 sending_state.1101 sending_state.1100 sending_state.1011 sending_state.1010 sending_state.1001 sending_state.1000 sending_state.0111 sending_state.0110 sending_state.0101 sending_state.0100 sending_state.0011 sending_state.0010 sending_state.0001 sending_state.0000 
 sending_state.0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
@@ -27,18 +18,40 @@ sending_state.1101 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1
 sending_state.1110 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 sending_state.1111 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
-State Machine - |controller|mn
-Name mn.1001 mn.1000 mn.0111 mn.0110 mn.0101 mn.0100 mn.0011 mn.0010 mn.0001 mn.0000 
-mn.0000 0 0 0 0 0 0 0 0 0 0 
-mn.0001 0 0 0 0 0 0 0 0 1 1 
-mn.0010 0 0 0 0 0 0 0 1 0 1 
-mn.0011 0 0 0 0 0 0 1 0 0 1 
-mn.0100 0 0 0 0 0 1 0 0 0 1 
-mn.0101 0 0 0 0 1 0 0 0 0 1 
-mn.0110 0 0 0 1 0 0 0 0 0 1 
-mn.0111 0 0 1 0 0 0 0 0 0 1 
-mn.1000 0 1 0 0 0 0 0 0 0 1 
-mn.1001 1 0 0 0 0 0 0 0 0 1 
+State Machine - |controller|indexing_state
+Name indexing_state.101 indexing_state.100 indexing_state.011 indexing_state.010 indexing_state.001 indexing_state.000 
+indexing_state.000 0 0 0 0 0 0 
+indexing_state.001 0 0 0 0 1 1 
+indexing_state.010 0 0 0 1 0 1 
+indexing_state.011 0 0 1 0 0 1 
+indexing_state.100 0 1 0 0 0 1 
+indexing_state.101 1 0 0 0 0 1 
+
+State Machine - |controller|state
+Name state.1001 state.1000 state.done_s state.sending_s state.summing_s state.indexing_s state.processing_s state.filtering_s state.receiving_s state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.receiving_s 0 0 0 0 0 0 0 0 1 1 
+state.filtering_s 0 0 0 0 0 0 0 1 0 1 
+state.processing_s 0 0 0 0 0 0 1 0 0 1 
+state.indexing_s 0 0 0 0 0 1 0 0 0 1 
+state.summing_s 0 0 0 0 1 0 0 0 0 1 
+state.sending_s 0 0 0 1 0 0 0 0 0 1 
+state.done_s 0 0 1 0 0 0 0 0 0 1 
+state.1000 0 1 0 0 0 0 0 0 0 1 
+state.1001 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |controller|debug
+Name debug.1001 debug.1000 debug.0111 debug.0110 debug.0101 debug.0100 debug.0011 debug.0010 debug.0001 debug.0000 
+debug.0000 0 0 0 0 0 0 0 0 0 0 
+debug.0001 0 0 0 0 0 0 0 0 1 1 
+debug.0010 0 0 0 0 0 0 0 1 0 1 
+debug.0011 0 0 0 0 0 0 1 0 0 1 
+debug.0100 0 0 0 0 0 1 0 0 0 1 
+debug.0101 0 0 0 0 1 0 0 0 0 1 
+debug.0110 0 0 0 1 0 0 0 0 0 1 
+debug.0111 0 0 1 0 0 0 0 0 0 1 
+debug.1000 0 1 0 0 0 0 0 0 0 1 
+debug.1001 1 0 0 0 0 0 0 0 0 1 
 
 State Machine - |controller|filter_test:ff1|LP:lp1|LP_0002:lp_inst|LP_0002_ast:LP_0002_ast_inst|auk_dspip_avalon_streaming_sink_hpfir:sink|sink_state
 Name sink_state.end1 sink_state.st_err sink_state.run1 sink_state.stall sink_state.start 

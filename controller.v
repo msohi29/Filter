@@ -125,7 +125,7 @@ integer t = 0; // Counter for Sum data ram index.
 integer p = 0; // Counter for filtered data ram index.
 
 
-
+reg start = 0;     // Flag to start the state machine.
 reg filtering = 0; // Flag to start filered data ram storage.
 
 // Variables to hold data at summing state.
@@ -391,7 +391,7 @@ if(pll_on) begin
 		sending_s:		begin
 								
 								if (TX_EN && !TX_BUSY) begin // on enable signal and while a stream isn't happening
-									mn <= 7;
+									debug <= 7;
 									case (sending_state)
 										4'd0: begin	
 												data_in <= 0;
