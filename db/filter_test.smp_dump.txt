@@ -1,22 +1,18 @@
 
 State Machine - |controller|sending_state
-Name sending_state.1111 sending_state.1110 sending_state.1101 sending_state.1100 sending_state.1011 sending_state.1010 sending_state.1001 sending_state.1000 sending_state.0111 sending_state.0110 sending_state.0101 sending_state.0100 sending_state.0011 sending_state.0010 sending_state.0001 sending_state.0000 
-sending_state.0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-sending_state.0001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-sending_state.0010 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-sending_state.0011 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-sending_state.0100 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-sending_state.0101 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-sending_state.0110 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-sending_state.0111 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-sending_state.1000 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-sending_state.1001 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-sending_state.1010 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-sending_state.1011 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-sending_state.1100 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-sending_state.1101 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
-sending_state.1110 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-sending_state.1111 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name sending_state.1011 sending_state.1010 sending_state.1001 sending_state.1000 sending_state.0111 sending_state.0110 sending_state.0101 sending_state.0100 sending_state.0011 sending_state.0010 sending_state.0001 sending_state.0000 
+sending_state.0000 0 0 0 0 0 0 0 0 0 0 0 0 
+sending_state.0001 0 0 0 0 0 0 0 0 0 0 1 1 
+sending_state.0010 0 0 0 0 0 0 0 0 0 1 0 1 
+sending_state.0011 0 0 0 0 0 0 0 0 1 0 0 1 
+sending_state.0100 0 0 0 0 0 0 0 1 0 0 0 1 
+sending_state.0101 0 0 0 0 0 0 1 0 0 0 0 1 
+sending_state.0110 0 0 0 0 0 1 0 0 0 0 0 1 
+sending_state.0111 0 0 0 0 1 0 0 0 0 0 0 1 
+sending_state.1000 0 0 0 1 0 0 0 0 0 0 0 1 
+sending_state.1001 0 0 1 0 0 0 0 0 0 0 0 1 
+sending_state.1010 0 1 0 0 0 0 0 0 0 0 0 1 
+sending_state.1011 1 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |controller|indexing_state
 Name indexing_state.101 indexing_state.100 indexing_state.011 indexing_state.010 indexing_state.001 indexing_state.000 
@@ -28,9 +24,9 @@ indexing_state.100 0 1 0 0 0 1
 indexing_state.101 1 0 0 0 0 1 
 
 State Machine - |controller|state
-Name state.1001 state.1000 state.done_s state.sending_s state.summing_s state.indexing_s state.processing_s state.filtering_s state.receiving_s state.0000 
-state.0000 0 0 0 0 0 0 0 0 0 0 
-state.receiving_s 0 0 0 0 0 0 0 0 1 1 
+Name state.1001 state.1000 state.done_s state.sending_s state.summing_s state.indexing_s state.processing_s state.filtering_s state.0000 state.receiving_s 
+state.receiving_s 0 0 0 0 0 0 0 0 0 0 
+state.0000 0 0 0 0 0 0 0 0 1 1 
 state.filtering_s 0 0 0 0 0 0 0 1 0 1 
 state.processing_s 0 0 0 0 0 0 1 0 0 1 
 state.indexing_s 0 0 0 0 0 1 0 0 0 1 

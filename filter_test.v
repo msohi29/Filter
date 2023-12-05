@@ -32,10 +32,10 @@ always @ (posedge clk) begin
 //			filt_start <= 0;
 //		end
 		
-		if(filt_valid_out) begin
+		if(~filt_valid_out) begin
 			out <= filt_data_out;
 		end
-		filt_valid <= filt_valid_out;
+//		filt_valid <= filt_valid_out;
 		filt_data_in <= data_in;
 end
 

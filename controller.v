@@ -4,8 +4,9 @@
  * Date: Nov 25, 2023
  * Purpose: This module acts as a controller for the beamformer. It connects all the signals for 
  * 			different components of the beamformer, which are: 
- *					1. FIR II filter,
- *					2. Dual Port BRAM that hold data for:
+ * 				1. PLL Core.
+ *					2. FIR II filter,
+ *					3. Dual Port BRAM that hold data for:
  * 					1. Raw Data - This is the input data to the beamformer from the ADC's
  *						2. Filtered Data - This is the output of the FIR II filter.
  *						3. Processed Data - This is the data from the filtered ram broken down 
@@ -37,7 +38,7 @@ reg reset = 1;
 
 // Raw data ram signals:
 reg ram_read_en = 0; 
-wire ram_write_en;
+reg ram_write_en;
 reg [13:0]ram_read_addr = 0;
 wire [13:0]ram_write_addr;
 wire [15:0]ram_data_in;
@@ -90,11 +91,12 @@ PLL pll1				(pll_reset, clk50, clk, pll_locked);
 ram rr1				(clk, ram_data_in, ram_read_addr, ram_read_en, ram_write_addr, ram_write_en, ram_data_out);
 filter_test ff1	(clk, reset, ram_data_out, filt_valid, data_out);
 filtered_ram rr2	(clk, data_out, filt_read_addr, filt_read_en, filt_write_addr, filt_write_en, filt_ram_data_out);
+//filtered_OPRAM r2 (filt_write_addr, clk, filt_ram_data_in, filt_write_en, filt_ram_data_out);
 processed_ram rr3	(clk, proc_ram_data_in, proc_read_addr, proc_read_en, proc_write_addr, proc_write_en, proc_ram_data_out);
 delays_ram rr4		(clk, delay_ram_data_in, delay_read_addr, delay_read_en, delay_write_addr, delay_write_en, delay_ram_data_out);
 output_ram rr5		(clk, output_ram_data_in, output_read_addr, output_read_en, output_write_addr, output_write_en, output_ram_data_out);
 sum_ram rr6			(clk, sum_ram_data_in, sum_read_addr, sum_read_en, sum_write_addr, sum_write_en, sum_ram_data_out);
-
+//OPRAM r6			(sum_write_addr, clk, sum_ram_data_in, sum_write_en, sum_ram_data_out);
 // Transmit module signals:
 wire TX_BUSY;
 reg  [7:0] data_in = 0; // output buffer for TX
@@ -199,28 +201,32 @@ if(pll_on) begin
 							end
 		
 		filtering_s:	begin
-		
-							//if(i && (i % 2048)) begin
+//							if(filt_valid) begin	
 								ram_read_addr <= i;
 								ram_read_en <= 1;
-							//end
-		
 							
-							if(i >= 13) begin
-								filtering <= 1;
-								j <= j + 1;
-							end
+								if(i >= 13) begin
+									filtering <= 1;
+									j <= j + 1;
+								end
+								
+								if(i < 16383) begin
+									i <= i + 1;
+								end
+								
+								if( j == 2048) begin
+									filtering <= 0;
+									j <= 0;
+									processing_state <= 0;
+									state <= processing_s;
+								end
 							
-							if(i < 16383) begin
-								i <= i + 1;
-							end
+//							end else begin
+//								ram_read_addr <= ram_read_addr + 1;
+//								ram_read_en <= 1;
+//							end
 							
-							if( j == 2048) begin
-								filtering <= 0;
-								j <= 0;
-								processing_state <= 0;
-								state <= processing_s;
-							end
+							
 							end
 							
 		processing_s:	begin
@@ -380,16 +386,21 @@ if(pll_on) begin
 							if(t == 768) begin
 								t <= 0;
 								i <= 0;
-								state <= sending_s;
+								
 								debug <= 1;
 								sum_write_en <= 0;
 								sum_read_en <= 1;
+								sum_read_addr <= 0;
+								
+								state <= sending_s;
 							end
 		
 							end
 							
 		sending_s:		begin
-								
+//								state <= done_s;
+/*****************************************************************************************************/		
+
 								if (TX_EN && !TX_BUSY) begin // on enable signal and while a stream isn't happening
 									debug <= 7;
 									case (sending_state)
@@ -452,6 +463,49 @@ if(pll_on) begin
 									TX_EN <= 0;
 									state <= done_s;
 								end
+
+/*****************************************************************************************************/							
+/*
+						if (TX_EN && !TX_BUSY) begin // on enable signal and while a stream isn't happening
+							case (i)
+								0: begin	
+									data_in <= 0;
+									i = 1;
+									end
+								1: begin
+									i <= 2;
+									end
+								2: begin
+									TX_START <= 1'b1;
+									data_in = filt_ram_data_out[15:8];
+									i = 3;
+									end
+								3: begin
+									i = 4;
+									end
+								4: begin
+									TX_START <= 1'b1;
+									data_in = filt_ram_data_out[7:0];
+									i <= 5;
+									end
+								5: begin
+									TX_START <= 1'b0;
+									filt_read_addr = filt_read_addr + 1;
+									i = 0;
+									end
+							endcase
+						end else begin
+							TX_START <= 1'b0;
+						end
+							
+						if(filt_read_addr == 16383) begin
+							filt_read_addr <= 0;
+							j <= 9;
+							TX_EN <= 0;
+					//		state <= done_s;
+						end
+*/
+/*****************************************************************************************************/							
 							end
 							
 		done_s:			begin
@@ -462,6 +516,8 @@ if(pll_on) begin
 							end
 	endcase
 	end
+	end else begin
+		state <= receiving_s;
 	end
 end
 	
@@ -493,7 +549,7 @@ if(pll_on)begin
 		4'd9:	seg1 <= ~7'b1110011;
 		default: seg1 <= 7'b1010100;
 	endcase
-	case (sending_state)
+	case (filt_valid)
 		4'd0: 	seg2 <= ~7'b1111110;
 		4'd1:		seg2 <= ~7'b0110000;
 		4'd2:		seg2 <= ~7'b1101101;
