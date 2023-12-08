@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name TOP_LEVEL_ENTITY controller
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:07:45  NOVEMBER 25, 2023"
-set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -112,13 +112,8 @@ set_location_assignment PIN_M23 -to start_key
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to start_key
 set_location_assignment PIN_M21 -to tx_key
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to tx_key
-set_global_assignment -name VERILOG_FILE communication.v
-set_global_assignment -name VERILOG_FILE UART.v
 set_global_assignment -name VERILOG_FILE TX.v
-set_global_assignment -name VERILOG_FILE RX.v
 set_global_assignment -name MIF_FILE delays.mif
-set_global_assignment -name QIP_FILE DPRAM.qip
-set_global_assignment -name VERILOG_FILE DPRAM.v
 set_global_assignment -name VERILOG_FILE ram_test.v
 set_global_assignment -name TCL_SCRIPT_FILE Modelsim/filter_test_tb.tcl
 set_global_assignment -name COMMAND_MACRO_FILE Modelsim/wave.do
@@ -135,6 +130,4 @@ set_global_assignment -name QIP_FILE output_ram.qip
 set_global_assignment -name QIP_FILE processed_ram.qip
 set_global_assignment -name QIP_FILE sum_ram.qip
 set_global_assignment -name QIP_FILE PLL.qip
-set_global_assignment -name QIP_FILE OPRAM.qip
-set_global_assignment -name QIP_FILE filtered_OPRAM.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

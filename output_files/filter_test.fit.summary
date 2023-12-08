@@ -1,11 +1,11 @@
-Fitter Status : Successful - Tue Dec  5 19:17:53 2023
-Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Fitter Status : Successful - Fri Dec 08 18:13:07 2023
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : filter_test
 Top-level Entity Name : controller
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 2,482 / 114,480 ( 2 % )
+Total logic elements : 2,478 / 114,480 ( 2 % )
     Total combinational functions : 1,439 / 114,480 ( 1 % )
     Dedicated logic registers : 2,164 / 114,480 ( 2 % )
 Total registers : 2164
